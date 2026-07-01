@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>農協・生協の組合員アンケート代行 ｜ アンケートまるごとサポート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #1a5fa8;
+  --primary-dark: #0f3d70;
+  --primary-light: #e8f1fb;
+  --accent: #3a7d2e;
+  --accent-light: #eaf4e6;
+  --accent-mid: #4a9d3a;
+  --accent-dark: #2a5d20;
+  --earth: #8b6914;
+  --earth-light: #fdf5e0;
+  --text: #1a1a2e;
+  --text-mid: #4a4a6a;
+  --text-light: #7a7a9a;
+  --bg: #f4f8f2;
+  --white: #ffffff;
+  --border: #dde3f0;
+  --serif: 'Noto Serif JP', serif;
+  --sans: 'Noto Sans JP', sans-serif;
+  --radius: 8px;
+  --radius-lg: 16px;
+  --shadow: 0 2px 16px rgba(58,125,46,0.08);
+  --shadow-md: 0 4px 24px rgba(26,95,168,0.13);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  font-size: 16px;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+.topbar-logo {
+  font-family: var(--serif);
+  font-size: 14px;
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: .02em;
+}
+.topbar-logo span { color: var(--text-light); font-weight: 400; font-size: 12px; display: block; }
+.topbar-cta {
+  background: var(--accent);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: opacity .2s;
+  white-space: nowrap;
+}
+.topbar-cta:hover { opacity: .85; }
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, #1a3d0a 0%, #2a5d20 50%, #3a7d2e 100%);
+  padding: 72px 24px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.04) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,220,80,0.08) 0%, transparent 40%);
+}
+.hero-inner { position: relative; max-width: 800px; margin: 0 auto; }
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 16px;
+  border-radius: 50px;
+  margin-bottom: 24px;
+  letter-spacing: .05em;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(22px, 4vw, 36px);
+  color: #fff;
+  line-height: 1.5;
+  font-weight: 700;
+  margin-bottom: 20px;
+  position: relative;
+}
+.hero h1 em {
+  font-style: normal;
+  color: #ffe170;
+  border-bottom: 2px solid #ffe170;
+}
+.hero-lead {
+  color: rgba(255,255,255,0.85);
+  font-size: clamp(14px, 2vw, 16px);
+  max-width: 620px;
+  margin: 0 auto 36px;
+  line-height: 1.8;
+}
+.hero-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  background: var(--earth);
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 20px rgba(139,105,20,0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(139,105,20,0.5); }
+.btn-ghost {
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 14px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.5);
+  transition: background .2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.1); }
+.hero-trust {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(255,255,255,0.8);
+  font-size: 13px;
+}
+.trust-icon {
+  width: 20px;
+  height: 20px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+/* ── CONTAINER ── */
+.container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+/* ── SECTION COMMON ── */
+section { padding: 64px 0; }
+.sec-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.sec-title {
+  font-family: var(--serif);
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+.sec-lead {
+  color: var(--text-mid);
+  font-size: 15px;
+  line-height: 1.8;
+  max-width: 620px;
+}
+
+/* ── PAIN SECTION ── */
+.pain-section { background: var(--white); }
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 36px;
+}
+.pain-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  position: relative;
+}
+.pain-card::before {
+  content: attr(data-num);
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 50px;
+  letter-spacing: .05em;
+}
+.pain-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+  margin-top: 4px;
+}
+.pain-card p { font-size: 14px; color: var(--text-mid); line-height: 1.7; }
+
+/* ── SOLUTION ── */
+.solution-section { background: var(--accent-light); }
+.flow-steps {
+  display: flex;
+  gap: 0;
+  margin-top: 40px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+.flow-step {
+  flex: 1;
+  min-width: 100px;
+  text-align: center;
+  position: relative;
+}
+.flow-step:not(:last-child)::after {
+  content: '▶';
+  position: absolute;
+  right: -10px;
+  top: 22px;
+  font-size: 14px;
+  color: var(--accent);
+  z-index: 1;
+}
+.flow-circle {
+  width: 48px;
+  height: 48px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin: 0 auto 10px;
+}
+.flow-step-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent-dark);
+  line-height: 1.4;
+}
+.flow-step-sub {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 3px;
+}
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 36px;
+}
+.service-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  border-top: 3px solid var(--accent);
+}
+.service-icon { font-size: 28px; margin-bottom: 12px; }
+.service-card h3 { font-size: 15px; font-weight: 700; color: var(--accent-dark); margin-bottom: 8px; }
+.service-card p { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+
+/* ── NOKYO SPECIFIC ── */
+.nokyo-section { background: var(--white); }
+.nokyo-points {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 36px;
+}
+.nokyo-point {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px;
+  background: var(--bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+.nokyo-num {
+  width: 32px;
+  height: 32px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.nokyo-point h3 { font-size: 14px; font-weight: 700; margin-bottom: 5px; }
+.nokyo-point p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+/* ── UNION PARALLEL BOX ── */
+.union-parallel { background: var(--accent-light); }
+.parallel-inner { display: flex; align-items: center; gap: 20px; padding: 28px 0; flex-wrap: wrap; }
+.parallel-icon { font-size: 40px; flex-shrink: 0; }
+.parallel-body h2 { font-family: var(--serif); font-size: clamp(16px, 2.5vw, 20px); font-weight: 700; color: var(--text); line-height: 1.5; margin-bottom: 6px; }
+.parallel-body p { font-size: 14px; color: var(--text-mid); line-height: 1.75; }
+.highlight-tag { display: inline-block; background: var(--accent); color: #fff; font-weight: 700; padding: 2px 10px; border-radius: 4px; font-size: 13px; }
+
+/* ── TRUST ── */
+.trust-section { background: var(--primary-dark); padding: 56px 0; }
+.trust-section .sec-label { color: #ffe170; }
+.trust-section .sec-title { color: #fff; }
+.trust-section .sec-lead { color: rgba(255,255,255,0.7); }
+.trust-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin-top: 40px;
+}
+.metric {
+  text-align: center;
+  padding: 24px 16px;
+  background: rgba(255,255,255,0.07);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.metric-num {
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffe170;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.metric-label { font-size: 12px; color: rgba(255,255,255,0.7); line-height: 1.4; }
+.pmark-box {
+  margin-top: 36px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius-lg);
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.pmark-badge {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 12px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.pmark-text { color: rgba(255,255,255,0.8); font-size: 14px; line-height: 1.7; flex: 1; min-width: 200px; }
+
+/* ── PRICE ── */
+.price-section { background: var(--bg); }
+.price-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 36px;
+}
+.price-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  box-shadow: var(--shadow);
+}
+.price-card.featured {
+  border-color: var(--accent);
+  border-width: 2px;
+  position: relative;
+}
+.price-card.featured::before {
+  content: '最多ご依頼';
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 14px;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+.price-tier { font-size: 12px; font-weight: 700; color: var(--accent); letter-spacing: .05em; margin-bottom: 6px; }
+.price-range-name { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.price-members { font-size: 13px; color: var(--text-mid); margin-bottom: 16px; }
+.price-amount {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 4px;
+}
+.price-amount span { font-size: 13px; font-weight: 400; color: var(--text-light); }
+.price-includes {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.price-includes li {
+  font-size: 12px;
+  color: var(--text-mid);
+  list-style: none;
+  padding: 3px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+.price-includes li::before {
+  content: '✓';
+  color: var(--accent);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.price-note {
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--text-light);
+  text-align: center;
+}
+
+/* ── FAQ ── */
+.faq-section { background: var(--white); }
+.faq-list { margin-top: 36px; }
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.faq-q {
+  padding: 18px 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--white);
+  transition: background .2s;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  user-select: none;
+}
+.faq-q:hover { background: var(--accent-light); }
+.faq-q-text { flex: 1; line-height: 1.5; }
+.faq-q-text::before {
+  content: 'Q';
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 4px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.faq-toggle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+  transition: transform .3s;
+}
+.faq-item.open .faq-toggle { transform: rotate(45deg); }
+.faq-a {
+  display: none;
+  padding: 0 24px 18px 24px;
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.8;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+.faq-a::before {
+  content: 'A';
+  display: inline-block;
+  background: var(--primary);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 4px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.faq-item.open .faq-a { display: block; }
+
+/* ── CTA FORM ── */
+.cta-section {
+  background: linear-gradient(135deg, #1a3d0a, #2a5d20 50%, #3a7d2e);
+  padding: 72px 0;
+}
+.cta-section .sec-label { color: #ffe170; }
+.cta-section .sec-title { color: #fff; }
+.cta-section .sec-lead { color: rgba(255,255,255,0.8); }
+.form-wrap {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  margin-top: 40px;
+  box-shadow: var(--shadow-md);
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 560px) { .form-grid { grid-template-columns: 1fr; } }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group.full { grid-column: 1 / -1; }
+label { font-size: 13px; font-weight: 700; color: var(--text); }
+label .req {
+  display: inline-block;
+  background: #e53935;
+  color: #fff;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+label .opt {
+  display: inline-block;
+  background: var(--bg);
+  color: var(--text-light);
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+  vertical-align: middle;
+  border: 1px solid var(--border);
+}
+input[type=text], input[type=email], input[type=tel], select, textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--white);
+  transition: border-color .2s, box-shadow .2s;
+  outline: none;
+  -webkit-appearance: none;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(58,125,46,0.12);
+}
+textarea { min-height: 100px; resize: vertical; }
+.form-submit {
+  margin-top: 24px;
+  text-align: center;
+}
+.submit-btn {
+  background: var(--accent);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 16px 48px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 20px rgba(58,125,46,0.35);
+  font-family: var(--sans);
+}
+.submit-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(58,125,46,0.45); }
+.form-note { font-size: 12px; color: var(--text-light); margin-top: 12px; }
+.tel-cta {
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.tel-label { font-size: 13px; color: var(--text-mid); margin-bottom: 6px; }
+.tel-num {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  letter-spacing: .03em;
+}
+.tel-hours { font-size: 12px; color: var(--text-light); margin-top: 4px; }
+
+/* ── FOOTER ── */
+footer {
+  background: #0a2545;
+  padding: 32px 24px;
+  text-align: center;
+  color: rgba(255,255,255,0.5);
+  font-size: 12px;
+}
+footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+
+/* ── ANIMATIONS ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.fade-in.visible { opacity: 1; transform: none; }
+
+@media (max-width: 640px) {
+  section { padding: 48px 0; }
+  .flow-steps { gap: 4px; }
+  .flow-step-label { font-size: 10px; }
+  .form-wrap { padding: 24px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav class="topbar">
+  <a href="https://www.survey-support.jp/" class="topbar-logo">
+    アンケートまるごとサポート
+    <span>（株）東海共同印刷</span>
+  </a>
+  <a href="#contact" class="topbar-cta">無料相談する</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">農業協同組合（JA）・生活協同組合向け専用ページ</div>
+    <h1>組合員ニーズ調査・購買行動調査の<br><em>準備から報告書まで一括代行</em></h1>
+    <p class="hero-lead">
+      組合員アンケートの設計・印刷・発送・回収・集計・報告書作成を一社で一括代行。<br>
+      地域別・品目別クロス集計で、組合員の声を事業改善に直結させます。
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">📋 無料で相談する</a>
+      <a href="#price" class="btn-ghost">💰 料金の目安を見る</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <div class="trust-icon">✓</div>
+        プライバシーマーク取得
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">✓</div>
+        2011年〜の実績
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">✓</div>
+        紙・Web両対応
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">✓</div>
+        地域・支所別クロス集計対応
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain-section">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-label">よくあるお困りごと</p>
+      <h2 class="sec-title">農協・生協担当者のこんなお悩み、<br>ありませんか？</h2>
+      <p class="sec-lead">毎年実施される組合員アンケート。広大なエリアの組合員に調査を届け、地域ごとの声を拾い上げる——その工程の大変さはよく理解しています。</p>
+    </div>
+    <div class="pain-grid fade-in">
+      <div class="pain-card" data-num="お困りごと 01">
+        <h3>エリアが広く発送・回収が大変</h3>
+        <p>管内が広域にわたり、支所・地区ごとへの発送や回収の取りまとめに多大な手間がかかる。</p>
+      </div>
+      <div class="pain-card" data-num="お困りごと 02">
+        <h3>地区・品目・年齢別の集計が煩雑</h3>
+        <p>組合員の地域・営農品目・年代など複数の軸でクロス集計したいが、Excelでの手作業では限界がある。</p>
+      </div>
+      <div class="pain-card" data-num="お困りごと 03">
+        <h3>職員だけでは回収・入力が追いつかない</h3>
+        <p>調査期間中に通常の営農指導・組合員サービス業務と並行して調査管理をするのが負担になっている。</p>
+      </div>
+      <div class="pain-card" data-num="お困りごと 04">
+        <h3>個人情報の取り扱いが心配</h3>
+        <p>組合員の購買行動・経営意向・生活実態などのデータを外部業者に預けることへの不安がある。</p>
+      </div>
+      <div class="pain-card" data-num="お困りごと 05">
+        <h3>回収率が低く代表性に疑問が残る</h3>
+        <p>高齢組合員が多く、紙の郵送調査では返送してくれない方が多い。回収率を上げる方法がわからない。</p>
+      </div>
+      <div class="pain-card" data-num="お困りごと 06">
+        <h3>理事会・総代会向けの報告書作成が重荷</h3>
+        <p>集計データを総代会・理事会向けに見やすい報告書にまとめる作業が、担当者の大きな負担になっている。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution-section">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-label">サービス概要</p>
+      <h2 class="sec-title">調査の全工程を、<br>一社でまるごとお任せください</h2>
+      <p class="sec-lead">設計から報告書まで、担当者が複数の業者と交渉する手間をゼロにします。</p>
+    </div>
+
+    <div class="flow-steps fade-in" style="margin-top:40px">
+      <div class="flow-step">
+        <div class="flow-circle">📝</div>
+        <div class="flow-step-label">調査票<br>設計</div>
+        <div class="flow-step-sub">設問・レイアウト</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-circle">🖨️</div>
+        <div class="flow-step-label">印刷・<br>資材準備</div>
+        <div class="flow-step-sub">封筒・依頼状</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-circle">📬</div>
+        <div class="flow-step-label">発送</div>
+        <div class="flow-step-sub">組合員宅・支所</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-circle">📥</div>
+        <div class="flow-step-label">回収</div>
+        <div class="flow-step-sub">私書箱対応</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-circle">📊</div>
+        <div class="flow-step-label">集計<br>処理</div>
+        <div class="flow-step-sub">地域・品目別</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-circle">📄</div>
+        <div class="flow-step-label">報告書<br>作成</div>
+        <div class="flow-step-sub">総代会・理事会向け</div>
+      </div>
+    </div>
+
+    <div class="service-grid fade-in">
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>調査票の設計・印刷</h3>
+        <p>組合員ニーズ調査・購買行動調査・事業満足度調査など、目的に応じた調査票を設計。高齢組合員が回答しやすいマークシート形式にも対応します。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📦</div>
+        <h3>封入・発送・回収</h3>
+        <p>依頼状・返信封筒の同梱から組合員宅への全国一斉発送まで。私書箱での直接回収により、支所を経由せず効率的に回収できます。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💻</div>
+        <h3>Webアンケートの構築</h3>
+        <p>スマートフォン対応Webフォームを構築し、紙との併用で若い世代の回答率を向上。QRコードを調査票に印刷して誘導できます。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📈</div>
+        <h3>地域別・品目別クロス集計</h3>
+        <p>地区・支所別、営農品目別、組合員年代別などのクロス集計グラフを作成。地域ごとのニーズ差異を可視化できます。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📑</div>
+        <h3>総代会・理事会向け報告書</h3>
+        <p>調査結果を見やすくまとめた報告書を作成。前回調査との経年比較グラフにも対応し、事業改善の根拠資料として活用できます。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔒</div>
+        <h3>個人情報の安全管理</h3>
+        <p>プライバシーマーク取得済み。社内一貫処理で組合員データが外部に出ることなく安心してお任せいただけます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOKYO SPECIFIC -->
+<section class="nokyo-section">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-label">農協・生協専門の強み</p>
+      <h2 class="sec-title">「組合員調査」ならではの<br>ノウハウがあります</h2>
+      <p class="sec-lead">一般のアンケート代行会社との違いは、農協・生協の調査特有の事情を熟知している点です。</p>
+    </div>
+    <div class="nokyo-points fade-in">
+      <div class="nokyo-point">
+        <div class="nokyo-num">1</div>
+        <div>
+          <h3>地区・支所・品目コードによるクロス集計</h3>
+          <p>管内地区別・支所別・営農品目別・組合員種別など、農協・生協ならではの分類軸で詳細なクロス集計ができます。</p>
+        </div>
+      </div>
+      <div class="nokyo-point">
+        <div class="nokyo-num">2</div>
+        <div>
+          <h3>高齢組合員も回答しやすい設計と郵送回収</h3>
+          <p>デジタルに不慣れな高齢組合員が多い農協・生協向けに、大きな文字・シンプルな設問の紙調査票と郵送回収を基本とし、若い世代向けにWeb併用も対応します。</p>
+        </div>
+      </div>
+      <div class="nokyo-point">
+        <div class="nokyo-num">3</div>
+        <div>
+          <h3>総代会・理事会の日程に合わせた納期管理</h3>
+          <p>定時総代会・理事会の開催日程から逆算したスケジュールを提案。報告書作成まで含めた全体の段取りを一緒に設計します。</p>
+        </div>
+      </div>
+      <div class="nokyo-point">
+        <div class="nokyo-num">4</div>
+        <div>
+          <h3>ニーズ調査・購買行動・事業満足度の実績</h3>
+          <p>組合員ニーズ調査、購買行動・利用意向調査、事業満足度調査、経営実態調査など、農協・生協特有の調査類型に豊富な実績があります。</p>
+        </div>
+      </div>
+      <div class="nokyo-point">
+        <div class="nokyo-num">5</div>
+        <div>
+          <h3>経年比較で組合員ニーズの変化を可視化</h3>
+          <p>前回・前々回のデータと比較したトレンドグラフで、組合員ニーズの変化や事業改善の効果を総代会で示せます。</p>
+        </div>
+      </div>
+      <div class="nokyo-point">
+        <div class="nokyo-num">6</div>
+        <div>
+          <h3>初めての外注でも安心の伴走サポート</h3>
+          <p>「どんな設問を作ればよいか」という段階からご相談可能。担当者が丁寧にヒアリングし、調査目的に合った設計を提案します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UNION PARALLEL NOTE -->
+<div class="union-parallel">
+  <div class="container">
+    <div class="parallel-inner fade-in">
+      <div class="parallel-icon">🤝</div>
+      <div class="parallel-body">
+        <h2>労働組合向け調査の実績も豊富。<br><span class="highlight-tag">「組合員」調査のノウハウを農協・生協にも活用</span></h2>
+        <p>弊社は労働組合向けアンケートの代行実績も多数あります。「組合員への調査」という共通の特性——無記名による本音の引き出し方、大会・総会向け報告書の作り方、回収率向上の工夫——を農協・生協の調査にも応用できます。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST -->
+<section class="trust-section">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-label">実績と信頼</p>
+      <h2 class="sec-title">2011年から積み重ねた<br>アンケート支援の実績</h2>
+      <p class="sec-lead">農協・生協・労働組合・自治体・医療機関・大学研究室など、多様な組織からご依頼いただいています。</p>
+    </div>
+    <div class="trust-metrics fade-in">
+      <div class="metric">
+        <div class="metric-num">2011</div>
+        <div class="metric-label">年からサービス開始<br>長年の実績</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">Pマーク</div>
+        <div class="metric-label">プライバシーマーク<br>取得済み</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">一貫</div>
+        <div class="metric-label">社内完結処理で<br>データ漏洩リスクなし</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">紙+Web</div>
+        <div class="metric-label">高齢組合員〜若い世代<br>両対応</div>
+      </div>
+    </div>
+    <div class="pmark-box fade-in">
+      <div class="pmark-badge">🔒 プライバシーマーク取得<br>No.24000347</div>
+      <p class="pmark-text">
+        組合員の購買行動・経営実態・生活ニーズ・組合運営への意見など、外部に漏れてはならないデータを扱う調査だからこそ、プライバシーマーク取得と社内一貫処理による安全管理を徹底しています。データは外部の集計会社や印刷会社に転送されることはありません。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section class="price-section" id="price">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-label">料金の目安</p>
+      <h2 class="sec-title">組合員規模別・参考料金</h2>
+      <p class="sec-lead">実施内容によって変動しますが、最初の予算感の参考にご活用ください。お見積もりは無料です。</p>
+    </div>
+    <div class="price-cards fade-in">
+      <div class="price-card">
+        <div class="price-tier">SMALL</div>
+        <div class="price-range-name">小規模JA・小型生協</div>
+        <div class="price-members">〜1,000人規模</div>
+        <div class="price-amount">20万円<span>〜（税別）</span></div>
+        <ul class="price-includes">
+          <li>調査票デザイン・印刷</li>
+          <li>封入・発送（一括）</li>
+          <li>OCR読込・単純集計</li>
+          <li>集計表（Excel）納品</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <div class="price-tier">STANDARD</div>
+        <div class="price-range-name">中規模JA・生協</div>
+        <div class="price-members">1,000〜5,000人規模</div>
+        <div class="price-amount">60〜150万円<span>（税別）</span></div>
+        <ul class="price-includes">
+          <li>調査票デザイン・印刷</li>
+          <li>個別発送・私書箱回収</li>
+          <li>OCR読込・地域別クロス集計</li>
+          <li>グラフ付き報告書作成</li>
+          <li>経年比較対応</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">LARGE</div>
+        <div class="price-range-name">大規模JA・連合会</div>
+        <div class="price-members">5,000人〜・広域対応</div>
+        <div class="price-amount">要お見積もり</div>
+        <ul class="price-includes">
+          <li>全工程一括対応</li>
+          <li>Web併用・ハイブリッド</li>
+          <li>多軸クロス分析</li>
+          <li>総代会向け報告書・印刷</li>
+          <li>専任担当者をアサイン</li>
+        </ul>
+      </div>
+    </div>
+    <p class="price-note fade-in">※上記は参考目安です。設問数・回収方法・集計内容・報告書の有無などにより変動します。まずはお気軽にご相談ください。</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-label">よくあるご質問</p>
+      <h2 class="sec-title">農協・生協担当者からよく<br>いただく質問</h2>
+    </div>
+    <div class="faq-list fade-in">
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">管内が広域で支所が多数あります。地区・支所別に集計できますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">はい、対応しています。調査票に支所コード・地区コードを付与し、地区別・支所別のクロス集計表とグラフを作成できます。管内全体のサマリーと各地区の個別集計を同時提供することも可能です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">高齢の組合員が多く、Webでの回答が難しいと思います。紙中心で対応できますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">もちろんです。郵送調査（紙）を基本とし、若い世代向けにQRコードからのWeb回答を任意で追加する形が最も多いご依頼パターンです。高齢者が回答しやすいよう、大きな文字・少ない設問・選択式中心の調査票設計も対応します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">総代会の3週間前に報告書が必要です。スケジュール的に間に合いますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">総代会・理事会の日程から逆算したスケジュールを提案します。回収期間・集計期間・報告書作成期間を確保するため、調査開始の2〜3ヶ月前からご相談いただくと安心です。まずは現在の日程をお聞かせください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">前年度まで自分たちでExcelで集計していました。そのデータと今回の経年比較はできますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">前回のローデータ（Excel・CSVなど）をご提供いただければ、経年比較グラフを作成することが可能です。設問が変更になっている場合も、比較可能な項目だけで対応できます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">組合員の個人情報（住所・氏名）を業者に渡すことへの不安があります。</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">プライバシーマーク（No.24000347）を取得しており、組合員情報は社内で厳格に管理します。住所リストは発送にのみ使用し、集計段階では個人を特定できない形での処理を徹底します。個人情報の取り扱いについては、業務委託契約書に詳細を明記します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">購買行動調査として、利用している事業（農産物販売・購買・共済など）別の集計はできますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">はい、事業別・品目別のクロス集計に対応しています。農産物販売・購買事業・共済・信用・生活サービスなど、利用事業別に分析することで、各事業のニーズや課題を把握できます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FORM -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-label">無料相談・お見積もり</p>
+      <h2 class="sec-title">まずはお気軽にご相談ください</h2>
+      <p class="sec-lead">お見積もり・ご相談は無料です。「こんな調査はできる？」という段階でも歓迎します。2営業日以内にご連絡いたします。</p>
+    </div>
+    <div class="form-wrap fade-in">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>組合名・団体名 <span class="req">必須</span></label>
+          <input type="text" placeholder="○○農業協同組合 / △△生活協同組合">
+        </div>
+        <div class="form-group">
+          <label>担当者名・役職 <span class="req">必須</span></label>
+          <input type="text" placeholder="山田 太郎（企画担当）">
+        </div>
+        <div class="form-group">
+          <label>メールアドレス <span class="req">必須</span></label>
+          <input type="email" placeholder="yamada@ja-xxx.or.jp">
+        </div>
+        <div class="form-group">
+          <label>電話番号 <span class="opt">任意</span></label>
+          <input type="tel" placeholder="052-XXX-XXXX">
+        </div>
+        <div class="form-group">
+          <label>団体の種別 <span class="opt">任意</span></label>
+          <select>
+            <option value="">選択してください</option>
+            <option>農業協同組合（JA）</option>
+            <option>JA連合会・全農</option>
+            <option>生活協同組合（生協）</option>
+            <option>漁業協同組合</option>
+            <option>森林組合</option>
+            <option>その他協同組合</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>組合員数（概算） <span class="opt">任意</span></label>
+          <select>
+            <option value="">選択してください</option>
+            <option>〜500人</option>
+            <option>500〜1,000人</option>
+            <option>1,000〜3,000人</option>
+            <option>3,000〜5,000人</option>
+            <option>5,000人以上</option>
+            <option>未定</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>調査の種類 <span class="opt">任意</span></label>
+          <select>
+            <option value="">選択してください</option>
+            <option>組合員ニーズ・意識調査</option>
+            <option>購買行動・利用意向調査</option>
+            <option>事業満足度調査</option>
+            <option>経営実態・農業実態調査</option>
+            <option>まだ決めていない</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>調査の実施時期（予定） <span class="opt">任意</span></label>
+          <select>
+            <option value="">選択してください</option>
+            <option>1ヶ月以内</option>
+            <option>3ヶ月以内</option>
+            <option>半年以内</option>
+            <option>1年以内</option>
+            <option>未定・検討中</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>ご相談内容</label>
+          <textarea placeholder="調査の目的、現在の困りごと（地区別集計・総代会向け報告書など）、ご予算感など、お気軽にご記入ください。"></textarea>
+        </div>
+      </div>
+      <div class="form-submit">
+        <button class="submit-btn">無料相談を申し込む →</button>
+        <p class="form-note">送信後2営業日以内に担当者よりご連絡いたします。個人情報はプライバシーポリシーに従い適切に管理します。</p>
+      </div>
+      <div class="tel-cta">
+        <p class="tel-label">お電話でのご相談はこちら（無料）</p>
+        <div class="tel-num">📞 0120-935-040</div>
+        <p class="tel-hours">担当：花木（はなき）・都築　／　平日 9:00〜17:30</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>
+    <a href="https://www.survey-support.jp/">アンケートまるごとサポート</a>　／
+    <a href="https://www.tkp.co.jp/">（株）東海共同印刷</a>　／
+    <a href="https://www.survey-support.jp/privacy_policy">プライバシーポリシー</a>
+  </p>
+  <p style="margin-top:8px">© 東海共同印刷株式会社　All Rights Reserved.</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

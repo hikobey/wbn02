@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>患者満足度調査・利用者アンケート代行 ｜ アンケートまるごとサポート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #1a5fa8;
+  --primary-dark: #0f3d70;
+  --primary-mid: #1a5fa8cc;
+  --primary-light: #e8f1fb;
+  --primary-xlight: #f3f7fd;
+  --accent: #0e8f72;
+  --accent-light: #e4f5f1;
+  --accent-mid: #12b090;
+  --accent-dark: #0a6b55;
+  --gold: #c8960a;
+  --gold-light: #fdf6e0;
+  --text: #1a1a2e;
+  --text-mid: #4a4a6a;
+  --text-light: #8a8aaa;
+  --bg: #f4f8f7;
+  --white: #ffffff;
+  --border: #dde3f0;
+  --serif: 'Noto Serif JP', serif;
+  --sans: 'Noto Sans JP', sans-serif;
+  --radius: 8px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 8px rgba(14,143,114,0.07);
+  --shadow: 0 2px 16px rgba(14,143,114,0.10);
+  --shadow-md: 0 4px 28px rgba(26,95,168,0.14);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-size:16px;color:var(--text);background:var(--bg);line-height:1.75;-webkit-font-smoothing:antialiased}
+
+/* ── TOPBAR ── */
+.topbar{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.topbar-logo{font-family:var(--serif);font-size:14px;color:var(--primary);font-weight:700;text-decoration:none;line-height:1.3;flex-shrink:0}
+.topbar-logo span{color:var(--text-light);font-weight:400;font-size:11px;display:block}
+.topbar-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.topbar-tel{font-size:13px;color:var(--primary-dark);font-weight:700;text-decoration:none;white-space:nowrap}
+.topbar-tel span{font-size:11px;color:var(--text-light);font-weight:400;display:block;text-align:right}
+.topbar-cta{background:var(--accent);color:var(--white);font-size:13px;font-weight:700;padding:9px 20px;border-radius:50px;text-decoration:none;transition:opacity .2s;white-space:nowrap}
+.topbar-cta:hover{opacity:.85}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(140deg,#043d30 0%,#0a6b55 40%,#0e8f72 75%,#12aa88 100%);padding:72px 24px 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(255,255,255,0.04) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(26,95,168,0.15) 0%,transparent 40%)}
+.hero-inner{position:relative;max-width:800px;margin:0 auto}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:28px}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:12px;font-weight:500;padding:5px 14px;border-radius:50px;letter-spacing:.03em}
+.hero-badge.teal{background:rgba(255,255,255,0.2);border-color:rgba(255,255,255,0.4);color:#fff;font-weight:700}
+.hero h1{font-family:var(--serif);font-size:clamp(22px,4vw,38px);color:#fff;line-height:1.5;font-weight:700;margin-bottom:10px}
+.hero h1 em{font-style:normal;color:#7de8d4;border-bottom:2px solid rgba(125,232,212,0.5)}
+.hero-sub{font-family:var(--serif);font-size:clamp(13px,2vw,16px);color:rgba(255,255,255,0.75);margin-bottom:10px;letter-spacing:.04em}
+.hero-note{display:inline-block;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:var(--radius);padding:10px 20px;margin-bottom:32px;font-size:13px;color:rgba(255,255,255,0.85);line-height:1.6}
+.hero-note strong{color:#7de8d4;font-weight:700}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.btn-primary{background:var(--primary);color:#fff;font-size:15px;font-weight:700;padding:14px 32px;border-radius:50px;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(26,95,168,0.4);display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(26,95,168,0.5)}
+.btn-ghost{background:transparent;color:#fff;font-size:14px;font-weight:500;padding:14px 28px;border-radius:50px;text-decoration:none;border:1px solid rgba(255,255,255,0.45);transition:background .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-ghost:hover{background:rgba(255,255,255,0.1)}
+.hero-trust{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
+.htrust{display:flex;align-items:center;gap:7px;color:rgba(255,255,255,0.75);font-size:12px}
+.htrust-dot{width:18px;height:18px;background:rgba(255,255,255,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;flex-shrink:0}
+
+/* ── SHARED ── */
+.container{max-width:880px;margin:0 auto;padding:0 24px}
+section{padding:68px 0}
+.sec-eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin-bottom:10px}
+.sec-eyebrow.blue{color:var(--primary)}
+.sec-title{font-family:var(--serif);font-size:clamp(20px,3vw,30px);font-weight:700;color:var(--text);line-height:1.4;margin-bottom:14px}
+.sec-lead{color:var(--text-mid);font-size:15px;line-height:1.85;max-width:640px}
+.fade-in{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+/* ── INSIGHT BANNER ── */
+.insight-banner{background:var(--white);border-bottom:1px solid var(--border)}
+.insight-inner{display:flex;align-items:center;gap:20px;padding:28px 0;flex-wrap:wrap}
+.insight-icon{font-size:40px;flex-shrink:0}
+.insight-body h2{font-family:var(--serif);font-size:clamp(16px,2.5vw,22px);font-weight:700;color:var(--text);line-height:1.5;margin-bottom:6px}
+.insight-body p{font-size:14px;color:var(--text-mid);line-height:1.75}
+.insight-highlight{display:inline-block;background:var(--accent-light);color:var(--accent-dark);font-weight:700;padding:2px 10px;border-radius:4px;font-size:14px}
+
+/* ── PAIN ── */
+.pain-section{background:var(--white)}
+.pain-roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:36px}
+.pain-role-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px}
+.pain-role-label{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;margin-bottom:16px;padding:5px 14px;border-radius:50px}
+.pain-role-label.mgr{background:var(--accent-light);color:var(--accent-dark)}
+.pain-role-label.admin{background:var(--primary-light);color:var(--primary-dark)}
+.pain-role-label.nurse{background:#f0eafa;color:#6b3fa0}
+.pain-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.pain-list li{font-size:13px;color:var(--text-mid);padding:9px 12px;background:var(--white);border-radius:var(--radius);border:1px solid var(--border);line-height:1.6;display:flex;align-items:flex-start;gap:8px}
+.pain-list li::before{content:'…';color:var(--text-light);font-size:16px;flex-shrink:0;margin-top:-1px}
+
+/* ── SOLUTION ── */
+.solution-section{background:var(--accent-light)}
+.flow-wrap{margin-top:40px;overflow-x:auto;padding-bottom:4px}
+.flow-track{display:flex;align-items:flex-start;gap:0;min-width:560px}
+.flow-step{flex:1;text-align:center;position:relative;padding:0 6px}
+.flow-step:not(:last-child)::after{content:'▶';position:absolute;right:-8px;top:20px;font-size:12px;color:var(--accent);z-index:1}
+.flow-circle{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;margin:0 auto 8px;background:var(--accent);color:#fff}
+.flow-label{font-size:11px;font-weight:700;color:var(--accent-dark);line-height:1.4}
+.flow-sub{font-size:10px;color:var(--text-light);margin-top:2px}
+.service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:32px}
+.service-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;border-top:3px solid var(--accent);box-shadow:var(--shadow-sm)}
+.service-icon{font-size:26px;margin-bottom:10px}
+.service-card h3{font-size:14px;font-weight:700;color:var(--accent-dark);margin-bottom:7px}
+.service-card p{font-size:13px;color:var(--text-mid);line-height:1.7}
+.tag-teal{display:inline-block;background:var(--accent-light);color:var(--accent);font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;margin-top:8px}
+
+/* ── STRENGTHS ── */
+.strength-section{background:var(--white)}
+.strength-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:32px}
+.strength-card{border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 20px;background:var(--bg);display:flex;gap:14px;align-items:flex-start}
+.str-num{width:34px;height:34px;background:var(--accent);color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}
+.strength-card h3{font-size:14px;font-weight:700;margin-bottom:5px;color:var(--text)}
+.strength-card p{font-size:13px;color:var(--text-mid);line-height:1.65}
+.strength-card .badge{display:inline-block;background:var(--accent-light);color:var(--accent-dark);font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-top:6px;border:1px solid rgba(14,143,114,0.2)}
+
+/* ── TRUST DARK ── */
+.trust-section{background:var(--primary-dark);padding:60px 0}
+.trust-section .sec-eyebrow{color:#7de8d4}
+.trust-section .sec-title{color:#fff}
+.trust-section .sec-lead{color:rgba(255,255,255,0.7)}
+.trust-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;margin-top:40px}
+.metric{text-align:center;padding:24px 16px;background:rgba(255,255,255,0.07);border-radius:var(--radius-lg);border:1px solid rgba(255,255,255,0.12)}
+.metric-num{font-family:var(--serif);font-size:32px;font-weight:700;color:#7de8d4;line-height:1;margin-bottom:6px}
+.metric-label{font-size:12px;color:rgba(255,255,255,0.7);line-height:1.4}
+.pmark-box{margin-top:36px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:var(--radius-lg);padding:24px 32px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.pmark-badge{background:#fff;border-radius:var(--radius);padding:12px 20px;font-size:13px;font-weight:700;color:var(--primary-dark);display:flex;align-items:center;gap:8px;white-space:nowrap}
+.pmark-text{color:rgba(255,255,255,0.8);font-size:14px;line-height:1.7;flex:1;min-width:200px}
+
+/* ── PRICE ── */
+.price-section{background:var(--bg)}
+.third-party-box{margin-bottom:28px;background:var(--accent-light);border:1px solid rgba(14,143,114,0.25);border-radius:var(--radius-lg);padding:18px 22px;display:flex;align-items:flex-start;gap:14px}
+.third-party-icon{font-size:24px;flex-shrink:0}
+.third-party-box h3{font-size:14px;font-weight:700;color:var(--accent-dark);margin-bottom:4px}
+.third-party-box p{font-size:13px;color:#1a4a3a;line-height:1.65}
+.price-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:28px}
+.price-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 20px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
+.price-card.featured{border:2px solid var(--accent);position:relative}
+.price-card.featured::before{content:'よく選ばれます';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;font-size:11px;font-weight:700;padding:3px 14px;border-radius:50px;white-space:nowrap}
+.price-type{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.05em;margin-bottom:4px}
+.price-name{font-size:15px;font-weight:700;margin-bottom:2px}
+.price-scale{font-size:13px;color:var(--text-light);margin-bottom:14px}
+.price-amount{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--primary-dark);line-height:1.2;margin-bottom:4px}
+.price-amount span{font-size:13px;font-weight:400;color:var(--text-light)}
+.price-divider{border:none;border-top:1px solid var(--border);margin:14px 0}
+.price-includes{list-style:none;display:flex;flex-direction:column;gap:5px;flex:1}
+.price-includes li{font-size:12px;color:var(--text-mid);display:flex;align-items:flex-start;gap:6px;line-height:1.5}
+.price-includes li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0}
+.price-note{margin-top:20px;font-size:13px;color:var(--text-light);text-align:center;line-height:1.7}
+
+/* ── FAQ ── */
+.faq-section{background:var(--white)}
+.faq-list{margin-top:32px;display:flex;flex-direction:column;gap:10px}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+.faq-q{padding:18px 22px;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;background:var(--white);transition:background .2s;user-select:none}
+.faq-q:hover{background:var(--accent-light)}
+.faq-q-text{font-size:14px;font-weight:700;color:var(--text);line-height:1.5;flex:1}
+.faq-q-text::before{content:'Q';display:inline-block;background:var(--accent);color:#fff;font-size:10px;font-weight:700;padding:1px 7px;border-radius:4px;margin-right:10px;vertical-align:middle}
+.faq-toggle{width:24px;height:24px;border-radius:50%;background:var(--accent-light);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;transition:transform .3s}
+.faq-item.open .faq-toggle{transform:rotate(45deg)}
+.faq-a{display:none;padding:16px 22px 18px;font-size:14px;color:var(--text-mid);line-height:1.8;border-top:1px solid var(--border)}
+.faq-a-inner::before{content:'A';display:inline-block;background:var(--primary);color:#fff;font-size:10px;font-weight:700;padding:1px 7px;border-radius:4px;margin-right:10px;vertical-align:middle}
+.faq-item.open .faq-a{display:block}
+
+/* ── CTA / FORM ── */
+.cta-section{background:linear-gradient(140deg,#043d30,#0a6b55 50%,#0e8f72);padding:72px 0}
+.cta-section .sec-eyebrow{color:#7de8d4}
+.cta-section .sec-title{color:#fff}
+.cta-section .sec-lead{color:rgba(255,255,255,0.78)}
+.form-wrap{background:var(--white);border-radius:var(--radius-lg);padding:40px;margin-top:40px;box-shadow:var(--shadow-md)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:560px){.form-grid{grid-template-columns:1fr}}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group.full{grid-column:1/-1}
+label{font-size:13px;font-weight:700;color:var(--text)}
+label .req{display:inline-block;background:#d63031;color:#fff;font-size:10px;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle}
+label .opt{display:inline-block;background:var(--bg);color:var(--text-light);font-size:10px;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;border:1px solid var(--border)}
+input[type=text],input[type=email],input[type=tel],select,textarea{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius);font-size:14px;font-family:var(--sans);color:var(--text);background:var(--white);transition:border-color .2s,box-shadow .2s;outline:none;-webkit-appearance:none}
+input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(14,143,114,0.10)}
+textarea{min-height:90px;resize:vertical}
+.form-submit{margin-top:24px;text-align:center}
+.submit-btn{background:var(--accent);color:#fff;font-size:16px;font-weight:700;padding:16px 48px;border-radius:50px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(14,143,114,0.35);font-family:var(--sans)}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(14,143,114,0.45)}
+.form-note{font-size:12px;color:var(--text-light);margin-top:12px;line-height:1.7}
+.tel-cta{margin-top:28px;padding-top:28px;border-top:1px solid var(--border);text-align:center}
+.tel-label{font-size:13px;color:var(--text-mid);margin-bottom:5px}
+.tel-num{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--primary-dark);letter-spacing:.03em}
+.tel-hours{font-size:12px;color:var(--text-light);margin-top:4px}
+
+/* ── FOOTER ── */
+footer{background:#061c36;padding:28px 24px;text-align:center;color:rgba(255,255,255,0.45);font-size:12px}
+footer a{color:rgba(255,255,255,0.55);text-decoration:none}
+footer a:hover{color:rgba(255,255,255,0.8)}
+
+@media(max-width:640px){section{padding:48px 0}.form-wrap{padding:24px 20px}}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav class="topbar">
+  <a href="https://www.survey-support.jp/" class="topbar-logo">
+    アンケートまるごとサポート
+    <span>（株）東海共同印刷 運営</span>
+  </a>
+  <div class="topbar-right">
+    <a href="tel:0120935040" class="topbar-tel">
+      0120-935-040
+      <span>平日 9:00〜17:30 無料</span>
+    </a>
+    <a href="#contact" class="topbar-cta">無料相談する</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badges">
+      <span class="hero-badge teal">🏥 医療・介護施設向け専用ページ</span>
+      <span class="hero-badge">🔒 プライバシーマーク取得</span>
+      <span class="hero-badge">📋 紙・Web・訪問面接すべて対応</span>
+      <span class="hero-badge">📊 第三者委託で回答率・率直さが向上</span>
+    </div>
+    <p class="hero-sub">病院・クリニック・介護施設・福祉施設向け　患者満足度・利用者アンケート代行サービス</p>
+    <h1>患者・利用者の「本音」を引き出す<br><em>満足度調査を丸ごとお任せ</em>ください</h1>
+    <div class="hero-note">
+      <strong>第三者機関への委託</strong>で「施設への遠慮」がなくなり、回答の<strong>率直さ・回収率が向上</strong>します
+    </div>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">📬 無料で相談する</a>
+      <a href="#price" class="btn-ghost">💴 料金の目安を見る</a>
+    </div>
+    <div class="hero-trust">
+      <div class="htrust"><div class="htrust-dot">✓</div>2011年〜の実績</div>
+      <div class="htrust"><div class="htrust-dot">✓</div>社内一貫処理でデータ安全</div>
+      <div class="htrust"><div class="htrust-dot">✓</div>JCI・ISO15189対応書類にも対応相談可</div>
+      <div class="htrust"><div class="htrust-dot">✓</div>お見積もり・ご相談無料</div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHT BANNER -->
+<div class="insight-banner">
+  <div class="container">
+    <div class="insight-inner fade-in">
+      <div class="insight-icon">💡</div>
+      <div class="insight-body">
+        <h2>なぜ「自施設で実施」より<span class="insight-highlight">第三者委託</span>のほうが効果的なのか？</h2>
+        <p>患者・利用者は「施設のスタッフが見る」とわかると不満を書きにくくなります。第三者機関に集計・管理を委託することで、<strong>本音の意見が集まりやすくなり、改善点の把握精度が上がります。</strong>また、職員が調査業務を兼務しなくて済むため、ケアに集中できる環境が整います。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAIN -->
+<section class="pain-section">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-eyebrow blue">よくあるお困りごと</p>
+      <h2 class="sec-title">施設長・事務長・看護部長、<br>それぞれのお悩みに対応します</h2>
+      <p class="sec-lead">医療・介護の満足度調査は、経営管理・業務効率・ケア品質という複数の視点が交差します。それぞれの立場の課題を解決します。</p>
+    </div>
+    <div class="pain-roles fade-in">
+      <div class="pain-role-card">
+        <div class="pain-role-label mgr">🏢 施設長・事務長の悩み</div>
+        <ul class="pain-list">
+          <li>調査を実施してもスタッフが見ているせいか肯定的な回答ばかりで改善に活かせない</li>
+          <li>第三者評価・認証更新で患者満足度データが必要だが準備が大変</li>
+          <li>調査のたびに事務職員の業務が増え、通常業務に影響が出る</li>
+          <li>集計結果をどう報告書にまとめて職員に共有すればよいかわからない</li>
+          <li>競合施設との比較や業界標準との比較がしたいが方法がわからない</li>
+        </ul>
+      </div>
+      <div class="pain-role-card">
+        <div class="pain-role-label admin">📋 事務担当者の悩み</div>
+        <ul class="pain-list">
+          <li>紙の調査票の印刷・配布・回収・入力を毎年職員だけで対応しており疲弊している</li>
+          <li>個人情報保護の観点で、誰がデータを管理すべきか判断が難しい</li>
+          <li>調査票の設計や設問の適切な表現がわからない</li>
+          <li>複数の施設・病棟・フロアを一括で調査したいが管理が煩雑</li>
+          <li>スマートフォンが使えない高齢利用者にも対応できる調査方法が必要</li>
+        </ul>
+      </div>
+      <div class="pain-role-card">
+        <div class="pain-role-label nurse">🩺 看護部長・介護主任の悩み</div>
+        <ul class="pain-list">
+          <li>ケアの改善に本当に役立つ設問を考える時間がない</li>
+          <li>家族アンケートと利用者アンケートを同時に実施して比較したい</li>
+          <li>認知症のある利用者への調査方法をどうするか判断できない</li>
+          <li>前回調査と今回を比較して改善効果を示したいが集計方法がわからない</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution-section">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-eyebrow">サービス概要</p>
+      <h2 class="sec-title">設計から報告書まで一社で。<br>職員がケアに集中できる環境を。</h2>
+      <p class="sec-lead">調査票の設計・印刷・配布・回収・データ化・集計・報告書作成まで、施設内での業務負担をゼロにします。</p>
+    </div>
+
+    <div class="flow-wrap fade-in">
+      <div class="flow-track">
+        <div class="flow-step">
+          <div class="flow-circle">📝</div>
+          <div class="flow-label">調査票<br>設計</div>
+          <div class="flow-sub">施設種別・用途別</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-circle">🖨️</div>
+          <div class="flow-label">印刷・<br>資材準備</div>
+          <div class="flow-sub">配布物一式</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-circle">📬</div>
+          <div class="flow-label">配布・<br>発送</div>
+          <div class="flow-sub">院内配布・郵送</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-circle">📥</div>
+          <div class="flow-label">回収<br>管理</div>
+          <div class="flow-sub">私書箱・窓口</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-circle">🔍</div>
+          <div class="flow-label">データ化<br>精度保証</div>
+          <div class="flow-sub">目視補正・匿名化</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-circle">📊</div>
+          <div class="flow-label">集計・<br>分析</div>
+          <div class="flow-sub">部門別・属性別</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-circle">📄</div>
+          <div class="flow-label">報告書<br>作成</div>
+          <div class="flow-sub">経営会議・職員向け</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-grid fade-in">
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>調査票の設計・印刷</h3>
+        <p>患者満足度・利用者満足度・家族アンケートなど、施設種別・目的に合わせた調査票を設計。高齢者が回答しやすい文字サイズ・レイアウトにも対応します。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📦</div>
+        <h3>配布・発送・回収</h3>
+        <p>院内・施設内での配布セット一式の準備から、自宅宛郵送・私書箱回収まで対応。第三者機関が直接回収することで率直な回答を促します。</p>
+        <span class="tag-teal">第三者回収で本音を引き出す</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💻</div>
+        <h3>Webアンケート対応</h3>
+        <p>スマートフォン・タブレットから回答できるWebフォームを構築。紙との併用で、デジタルに不慣れな高齢者にも対応できます。</p>
+        <span class="tag-teal">紙との併用OK</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>データ化・精度保証</h3>
+        <p>手書き回答のスキャン・OCR読込と目視補正を組み合わせ、精度の高いデータを作成。匿名化処理も徹底します。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>部門別・属性別集計</h3>
+        <p>病棟別・フロア別・診療科別・入院外来別など、改善活動に直結する分類軸でクロス集計グラフを作成します。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📑</div>
+        <h3>経営会議・職員向け報告書</h3>
+        <p>経営会議・委員会向けのサマリー報告書から、現場職員への共有資料まで、読み手に合わせた形式で作成します。</p>
+        <span class="tag-teal">経年比較・前回対比グラフ対応</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRENGTHS -->
+<section class="strength-section">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-eyebrow">医療・介護専門の強み</p>
+      <h2 class="sec-title">「医療・介護の調査」ならではの<br>ノウハウが揃っています</h2>
+      <p class="sec-lead">一般のアンケート代行会社との違いは、医療・介護分野の調査固有の事情を熟知していることです。</p>
+    </div>
+    <div class="strength-grid fade-in">
+      <div class="strength-card">
+        <div class="str-num">1</div>
+        <div>
+          <h3>第三者機関としての回収で「本音」を引き出す</h3>
+          <p>施設とは別の第三者機関が直接回収・管理することで、患者・利用者が遠慮なく回答できる環境を整えます。否定的意見も含めた率直なデータが集まります。</p>
+          <span class="badge">第三者回収で回収率UP</span>
+        </div>
+      </div>
+      <div class="strength-card">
+        <div class="str-num">2</div>
+        <div>
+          <h3>高齢者・認知症対応を意識した調査票設計</h3>
+          <p>大きな文字・シンプルな選択肢・少ない設問数など、高齢の患者・利用者が負担なく回答できる設計のノウハウがあります。記述欄の活字化にも対応。</p>
+        </div>
+      </div>
+      <div class="strength-card">
+        <div class="str-num">3</div>
+        <div>
+          <h3>患者・利用者・家族を同時並行で調査</h3>
+          <p>利用者本人と家族・介護者へのアンケートを同時実施し、双方の視点を比較分析。ケア改善に多角的な示唆を提供します。</p>
+        </div>
+      </div>
+      <div class="strength-card">
+        <div class="str-num">4</div>
+        <div>
+          <h3>第三者評価・認証更新のデータ活用に対応</h3>
+          <p>福祉サービス第三者評価・JCI・各種認証更新で求められる満足度データの収集・整理をサポート。必要な書類形式での提供も相談できます。</p>
+          <span class="badge">第三者評価対応</span>
+        </div>
+      </div>
+      <div class="strength-card">
+        <div class="str-num">5</div>
+        <div>
+          <h3>研究倫理に沿った個人情報管理</h3>
+          <p>プライバシーマーク取得済み。社内一貫処理でデータが外部転送されることなく、医療機関が求める高い個人情報保護基準に対応します。</p>
+          <span class="badge">Pマーク No.24000347</span>
+        </div>
+      </div>
+      <div class="strength-card">
+        <div class="str-num">6</div>
+        <div>
+          <h3>複数施設・病棟を一括で管理</h3>
+          <p>グループ病院・系列介護施設の複数拠点を一括して調査・集計。施設間比較データも提供し、グループ全体の改善活動を支援します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust-section">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-eyebrow">実績と信頼</p>
+      <h2 class="sec-title">2011年から積み重ねた<br>アンケート支援の実績</h2>
+      <p class="sec-lead">病院・クリニック・特別養護老人ホーム・有料老人ホーム・デイサービスなど、多様な医療・介護施設からご依頼いただいています。</p>
+    </div>
+    <div class="trust-metrics fade-in">
+      <div class="metric">
+        <div class="metric-num">2011</div>
+        <div class="metric-label">年からサービス開始<br>長年の実績</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">Pマーク</div>
+        <div class="metric-label">プライバシーマーク<br>取得済み</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">社内</div>
+        <div class="metric-label">一貫処理で<br>データ漏洩リスクなし</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">紙+Web</div>
+        <div class="metric-label">高齢者〜デジタル世代<br>両対応</div>
+      </div>
+    </div>
+    <div class="pmark-box fade-in">
+      <div class="pmark-badge">🔒 プライバシーマーク取得<br>No.24000347</div>
+      <p class="pmark-text">
+        患者・利用者・家族の回答には、病歴・介護状況・施設への不満など、極めてセンシティブな情報が含まれます。プライバシーマーク取得と社内一貫処理により、データが外部の集計会社や印刷会社に転送されることなく、高い安全基準で管理します。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section class="price-section" id="price">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-eyebrow">料金の目安</p>
+      <h2 class="sec-title">施設規模・調査種別の参考料金</h2>
+      <p class="sec-lead">実施内容により変動しますが、予算立ての参考にご活用ください。お見積もりは無料・2営業日以内にご提示します。</p>
+    </div>
+    <div class="third-party-box fade-in">
+      <div class="third-party-icon">🏆</div>
+      <div>
+        <h3>第三者委託で「コスト＋効果」を同時に解決</h3>
+        <p>職員が調査業務に費やす時間コスト（印刷・配布・入力・集計・報告書作成）を換算すると、外部委託の方がトータルで安くなるケースが多くあります。さらに<strong>率直な回答データ</strong>が集まることで、改善活動の精度が向上します。</p>
+      </div>
+    </div>
+    <div class="price-cards fade-in">
+      <div class="price-card">
+        <div class="price-type">小規模施設</div>
+        <div class="price-name">クリニック・小規模施設</div>
+        <div class="price-scale">〜100名規模</div>
+        <div class="price-amount">10万円<span>〜（税別・概算）</span></div>
+        <hr class="price-divider">
+        <ul class="price-includes">
+          <li>調査票設計・印刷（A4・1〜2頁）</li>
+          <li>院内配布セット準備</li>
+          <li>入力・単純集計</li>
+          <li>集計表（Excel）納品</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <div class="price-type">中規模施設</div>
+        <div class="price-name">病院・特養・有料老人ホーム</div>
+        <div class="price-scale">100〜500名規模</div>
+        <div class="price-amount">30〜80万円<span>（税別・概算）</span></div>
+        <hr class="price-divider">
+        <ul class="price-includes">
+          <li>調査票設計・印刷</li>
+          <li>配布・私書箱回収</li>
+          <li>OCR読込・クロス集計</li>
+          <li>グラフ付き報告書作成</li>
+          <li>経年比較・部門別集計対応</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="price-type">大規模・グループ</div>
+        <div class="price-name">グループ病院・複数施設</div>
+        <div class="price-scale">500名以上・複数拠点</div>
+        <div class="price-amount">要お見積もり</div>
+        <hr class="price-divider">
+        <ul class="price-includes">
+          <li>全工程一括対応</li>
+          <li>紙・Web・訪問面接 併用</li>
+          <li>施設間比較分析</li>
+          <li>経営会議向け報告書</li>
+          <li>専任担当者をアサイン</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="price-type">家族アンケート</div>
+        <div class="price-name">家族・介護者郵送調査</div>
+        <div class="price-scale">自宅宛郵送・私書箱回収</div>
+        <div class="price-amount">別途お見積もり</div>
+        <hr class="price-divider">
+        <ul class="price-includes">
+          <li>家族向け調査票設計</li>
+          <li>自宅宛郵送・返信封筒</li>
+          <li>私書箱直接回収</li>
+          <li>利用者調査との統合集計</li>
+        </ul>
+      </div>
+    </div>
+    <p class="price-note fade-in">※設問数・回収方法・集計内容・報告書の有無・施設数などにより変動します。まずはお気軽にご相談ください。お見積もりは無料です。</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-eyebrow">よくあるご質問</p>
+      <h2 class="sec-title">施設長・事務担当者から<br>よくいただく質問</h2>
+    </div>
+    <div class="faq-list fade-in">
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">自施設でアンケートを配っても肯定的な回答ばかりで参考にならないのですが、改善できますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a"><span class="faq-a-inner">はい、第三者機関が回収・管理することで、患者・利用者が「施設に見られない」という安心感から、率直な意見を書きやすくなります。回収封筒の宛先を弊社私書箱にする、または郵送回収にするだけで、否定的意見の回答割合が高まる傾向があります。</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">高齢の利用者が多く、紙の記入が難しい方がいます。どう対応できますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a"><span class="faq-a-inner">大きな文字・少ない設問・選択肢中心の調査票設計で、高齢者が回答しやすい形式に対応します。また、職員または家族が読み上げて代理記入する方式や、QRコードからWebで回答できる方式など、対象者の状態に合わせた複数の手段を組み合わせることができます。</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">福祉サービス第三者評価の更新に向けて、満足度データが必要です。対応できますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a"><span class="faq-a-inner">はい、対応相談が可能です。第三者評価で求められる調査要件（回収率・設問内容・集計方法など）を確認の上、評価機関が要求する形式に合わせたデータ・報告書の作成をサポートします。まずは評価機関からの指示内容をご共有ください。</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">患者・利用者の個人情報の取り扱いが心配です。どのような管理体制ですか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a"><span class="faq-a-inner">プライバシーマーク（No.24000347）を取得しており、データは社内で一貫処理します。外部の集計会社や印刷会社に転送されることはありません。また、匿名化処理を徹底するため、弊社従業員でも個人と回答を紐付けられない管理を行っています。</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">グループ内の複数施設をまとめて調査・比較したいのですが、対応できますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a"><span class="faq-a-inner">はい、複数施設を一括管理する調査が可能です。施設ごとの個別集計に加え、施設間比較グラフ・グループ全体サマリーを作成し、グループ経営の視点で活用できるデータをご提供します。</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">利用者アンケートと家族アンケートを同時に実施して比較分析することはできますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a"><span class="faq-a-inner">はい、対応しています。利用者本人への院内・施設内調査と、家族への郵送調査を同時並行で実施し、同一設問に対する双方の評価を比較した集計表・グラフをご提供できます。</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">前回は自施設でExcelに入力して集計していました。そのデータとの経年比較はできますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a"><span class="faq-a-inner">前回のローデータ（Excel・CSVなど）をご提供いただければ、経年比較グラフを作成することが可能です。設問が変更になっている場合も、比較可能な項目だけを抽出して対応できます。</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FORM -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-eyebrow">無料相談・お見積もり</p>
+      <h2 class="sec-title">まずはお気軽にご相談ください</h2>
+      <p class="sec-lead">「どんな調査票にすればいいか」「どの範囲で委託できるか」という段階からのご相談を歓迎します。2営業日以内にご連絡いたします。</p>
+    </div>
+    <div class="form-wrap fade-in">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>施設名 <span class="req">必須</span></label>
+          <input type="text" placeholder="○○病院 / △△介護老人保健施設">
+        </div>
+        <div class="form-group">
+          <label>お名前・役職 <span class="req">必須</span></label>
+          <input type="text" placeholder="山田 太郎（事務長）">
+        </div>
+        <div class="form-group">
+          <label>メールアドレス <span class="req">必須</span></label>
+          <input type="email" placeholder="yamada@hospital.or.jp">
+        </div>
+        <div class="form-group">
+          <label>電話番号 <span class="opt">任意</span></label>
+          <input type="tel" placeholder="052-XXX-XXXX">
+        </div>
+        <div class="form-group">
+          <label>施設の種別 <span class="opt">任意</span></label>
+          <select>
+            <option value="">選択してください</option>
+            <option>病院・クリニック</option>
+            <option>特別養護老人ホーム</option>
+            <option>介護老人保健施設</option>
+            <option>有料老人ホーム・サービス付き高齢者向け住宅</option>
+            <option>デイサービス・デイケア</option>
+            <option>障害者施設・グループホーム</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>調査対象の概算人数 <span class="opt">任意</span></label>
+          <select>
+            <option value="">選択してください</option>
+            <option>〜50人</option>
+            <option>50〜100人</option>
+            <option>100〜300人</option>
+            <option>300〜500人</option>
+            <option>500人以上</option>
+            <option>未定</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>調査の種類 <span class="opt">任意</span></label>
+          <select>
+            <option value="">選択してください</option>
+            <option>患者満足度調査</option>
+            <option>利用者満足度調査</option>
+            <option>家族・介護者アンケート</option>
+            <option>利用者＋家族 両方</option>
+            <option>職員満足度・ES調査</option>
+            <option>まだ決めていない</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>調査実施の予定時期 <span class="opt">任意</span></label>
+          <select>
+            <option value="">選択してください</option>
+            <option>1ヶ月以内</option>
+            <option>3ヶ月以内</option>
+            <option>半年以内</option>
+            <option>1年以内</option>
+            <option>未定・検討中</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>ご相談内容</label>
+          <textarea placeholder="施設の概要、調査の目的・背景（第三者評価対応など）、現在の課題、ご予算感など、お気軽にご記入ください。"></textarea>
+        </div>
+      </div>
+      <div class="form-submit">
+        <button class="submit-btn">無料相談を申し込む →</button>
+        <p class="form-note">送信後2営業日以内に担当者よりご連絡いたします。<br>個人情報はプライバシーポリシーに従い適切に管理します。</p>
+      </div>
+      <div class="tel-cta">
+        <p class="tel-label">お電話でのご相談はこちら（無料・平日のみ）</p>
+        <div class="tel-num">📞 0120-935-040</div>
+        <p class="tel-hours">担当：花木（はなき）・都築　／　平日 9:00〜17:30</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>
+    <a href="https://www.survey-support.jp/">アンケートまるごとサポート</a>　／
+    <a href="https://www.tkp.co.jp/">東海共同印刷株式会社</a>　／
+    <a href="https://www.survey-support.jp/privacy_policy">プライバシーポリシー</a>
+  </p>
+  <p style="margin-top:8px">© 東海共同印刷株式会社　All Rights Reserved.</p>
+</footer>
+
+<script>
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 70);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
