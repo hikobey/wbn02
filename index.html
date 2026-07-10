@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アンケートまるごとサポート | 調査の設計から集計・報告書まで一括代行</title>
+<meta name="description" content="アンケートの設計・印刷・発送・回収・集計・報告書作成まで一括代行。プライバシーマーク取得の東海共同印刷が運営。学術・労組・医療介護・農協生協向けサービス。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── DESIGN TOKENS ── */
+:root {
+  --bg: #F6F5F1;
+  --surface: #FFFFFF;
+  --surface-2: #EFEDE8;
+  --text: #18181C;
+  --text-mid: #4A4A62;
+  --text-light: #88889A;
+  --navy-bg: #0E3460;
+  --navy: #1A5FA8;
+  --navy-light: #EBF2FB;
+  --gold: #A87018;
+  --gold-bright: #C89020;
+  --border: #E2DDD8;
+  --radius: 10px;
+  --radius-lg: 18px;
+  --serif: 'Noto Serif JP', 'Yu Mincho', '游明朝', Georgia, serif;
+  --sans: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  --shadow-sm: 0 1px 8px rgba(14,52,96,0.06);
+  --shadow: 0 3px 20px rgba(14,52,96,0.10);
+  --shadow-lg: 0 8px 40px rgba(14,52,96,0.15);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0D1620;
+    --surface: #152230;
+    --surface-2: #1C2C3E;
+    --text: #ECEAE4;
+    --text-mid: #9090A8;
+    --text-light: #606078;
+    --navy-bg: #081422;
+    --navy: #5A9EE0;
+    --navy-light: #1A2840;
+    --gold: #D4A030;
+    --gold-bright: #E0B040;
+    --border: #223040;
+    --shadow-sm: 0 1px 8px rgba(0,0,0,0.3);
+    --shadow: 0 3px 20px rgba(0,0,0,0.4);
+    --shadow-lg: 0 8px 40px rgba(0,0,0,0.55);
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0D1620;
+  --surface: #152230;
+  --surface-2: #1C2C3E;
+  --text: #ECEAE4;
+  --text-mid: #9090A8;
+  --text-light: #606078;
+  --navy-bg: #081422;
+  --navy: #5A9EE0;
+  --navy-light: #1A2840;
+  --gold: #D4A030;
+  --gold-bright: #E0B040;
+  --border: #223040;
+  --shadow-sm: 0 1px 8px rgba(0,0,0,0.3);
+  --shadow: 0 3px 20px rgba(0,0,0,0.4);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.55);
+}
+:root[data-theme="light"] {
+  --bg: #F6F5F1;
+  --surface: #FFFFFF;
+  --surface-2: #EFEDE8;
+  --text: #18181C;
+  --text-mid: #4A4A62;
+  --text-light: #88889A;
+  --navy-bg: #0E3460;
+  --navy: #1A5FA8;
+  --navy-light: #EBF2FB;
+  --gold: #A87018;
+  --gold-bright: #C89020;
+  --border: #E2DDD8;
+  --shadow-sm: 0 1px 8px rgba(14,52,96,0.06);
+  --shadow: 0 3px 20px rgba(14,52,96,0.10);
+  --shadow-lg: 0 8px 40px rgba(14,52,96,0.15);
+}
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  font-size: 16px;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── TOPNAV ── */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 28px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: box-shadow 0.25s;
+}
+.topnav.scrolled { box-shadow: var(--shadow-sm); }
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  text-decoration: none;
+  line-height: 1.3;
+  flex-shrink: 0;
+}
+.nav-logo small {
+  display: block;
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text-light);
+  letter-spacing: 0.02em;
+  margin-top: 1px;
+}
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.nav-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-mid);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.15s;
+}
+.nav-link:hover { color: var(--navy); }
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.nav-tel {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+.nav-tel small {
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text-light);
+  text-align: right;
+}
+.nav-cta {
+  background: var(--navy-bg);
+  color: #FFF;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 9px 22px;
+  border-radius: 50px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+.nav-cta:hover { opacity: 0.82; }
+.nav-theme-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  color: var(--text-mid);
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+.nav-theme-btn:hover { background: var(--surface-2); }
+
+/* ── HERO ── */
+.hero {
+  background: #0E3460;
+  padding: 88px 28px 96px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-deco {
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--serif);
+  font-size: clamp(240px, 28vw, 480px);
+  font-weight: 700;
+  color: rgba(255,255,255,0.03);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.03em;
+}
+.hero-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: rgba(255,255,255,0.45);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: rgba(255,255,255,0.3);
+  flex-shrink: 0;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(27px, 4.5vw, 50px);
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.5;
+  margin-bottom: 22px;
+  text-wrap: balance;
+}
+.hero h1 em {
+  font-style: normal;
+  color: #FFE0A0;
+  position: relative;
+}
+.hero h1 em::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(168,112,24,0.6);
+  border-radius: 1px;
+}
+.hero-lead {
+  font-size: clamp(14px, 1.8vw, 17px);
+  color: rgba(255,255,255,0.68);
+  max-width: 560px;
+  line-height: 1.9;
+  margin-bottom: 40px;
+}
+.hero-btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+  align-items: center;
+}
+.btn-gold {
+  background: var(--gold);
+  color: #FFF;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 34px;
+  border-radius: 50px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: filter 0.2s;
+  box-shadow: 0 4px 20px rgba(168,112,24,0.4);
+}
+.btn-gold:hover { filter: brightness(1.12); }
+.btn-ghost {
+  background: transparent;
+  color: rgba(255,255,255,0.85);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 13px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.28);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.08); }
+.hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  align-items: center;
+}
+.trust-chip {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
+}
+.trust-dot {
+  width: 16px;
+  height: 16px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  color: rgba(255,255,255,0.7);
+  flex-shrink: 0;
+}
+
+/* ── SHARED ── */
+.container { max-width: 920px; margin: 0 auto; padding: 0 28px; }
+.section-header { margin-bottom: 44px; }
+.sec-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.sec-title {
+  font-family: var(--serif);
+  font-size: clamp(21px, 3vw, 30px);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.45;
+  margin-bottom: 12px;
+  text-wrap: balance;
+}
+.sec-lead {
+  color: var(--text-mid);
+  font-size: 15px;
+  line-height: 1.85;
+  max-width: 580px;
+}
+.fade-in {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in.visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { opacity: 1; transform: none; transition: none; }
+}
+
+/* ── INDUSTRY SECTION ── */
+.industry-section {
+  background: var(--surface);
+  padding: 80px 0;
+}
+.industry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+.industry-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px 26px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
+  box-shadow: var(--shadow-sm);
+}
+.industry-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--card-color);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  transition: height 0.22s;
+}
+.industry-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: var(--card-color);
+}
+.industry-card:hover::before { height: 5px; }
+.card-icon { font-size: 34px; margin-bottom: 16px; }
+.card-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--card-color);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.card-title {
+  font-family: var(--serif);
+  font-size: clamp(17px, 2vw, 21px);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.45;
+  margin-bottom: 10px;
+}
+.card-desc {
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.75;
+  flex: 1;
+  margin-bottom: 18px;
+}
+.card-targets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+.card-target-chip {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: 11px;
+  color: var(--text-mid);
+  font-weight: 500;
+}
+.card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--card-color);
+  margin-top: auto;
+}
+.cta-arrow {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--card-color);
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  transition: transform 0.2s;
+}
+.industry-card:hover .cta-arrow { transform: translateX(3px); }
+
+/* card color variants — matching each LP's accent */
+.card-academic { --card-color: #2A8A5A; }
+.card-union    { --card-color: #C88010; }
+.card-kaigo    { --card-color: #0E8F72; }
+.card-nokyo    { --card-color: #3A7D2E; }
+
+/* ── PROCESS SECTION ── */
+.process-section {
+  background: var(--bg);
+  padding: 80px 0;
+}
+.process-scroll {
+  overflow-x: auto;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 44px;
+}
+.process-track {
+  display: flex;
+  align-items: flex-start;
+  min-width: 720px;
+}
+.process-step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  padding: 0 6px;
+}
+.process-step:not(:last-child)::after {
+  content: '›';
+  position: absolute;
+  right: -11px;
+  top: 14px;
+  font-size: 22px;
+  color: var(--border);
+  line-height: 1;
+}
+.step-node {
+  width: 52px;
+  height: 52px;
+  background: #0E3460;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin: 0 auto 12px;
+  color: #FFF;
+  position: relative;
+  z-index: 1;
+}
+.step-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+}
+.step-hint {
+  font-size: 10px;
+  color: var(--text-light);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+.process-note {
+  margin-top: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 22px;
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.7;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.process-note-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+/* ── STRENGTHS SECTION ── */
+.strengths-section {
+  background: #0E3460;
+  padding: 80px 0;
+}
+.strengths-section .sec-eyebrow { color: #FFE0A0; }
+.strengths-section .sec-title { color: #FFF; }
+.strengths-section .sec-lead { color: rgba(255,255,255,0.62); }
+.strengths-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 44px;
+}
+.strength-card {
+  background: rgba(255,255,255,0.055);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: var(--radius-lg);
+  padding: 28px 22px;
+  transition: background 0.2s;
+}
+.strength-card:hover { background: rgba(255,255,255,0.09); }
+.strength-icon { font-size: 28px; margin-bottom: 14px; }
+.strength-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #FFF;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.strength-body {
+  font-size: 13px;
+  color: rgba(255,255,255,0.58);
+  line-height: 1.75;
+}
+
+/* ── METRICS BAND ── */
+.metrics-band {
+  background: #081E44;
+  padding: 0;
+}
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.metric-cell {
+  padding: 32px 20px;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.07);
+}
+.metric-cell:last-child { border-right: none; }
+.metric-num {
+  font-family: var(--serif);
+  font-size: 34px;
+  font-weight: 700;
+  color: #FFE0A0;
+  line-height: 1;
+  margin-bottom: 7px;
+  font-variant-numeric: tabular-nums;
+}
+.metric-label {
+  font-size: 12px;
+  color: rgba(255,255,255,0.48);
+  line-height: 1.5;
+}
+
+/* ── PMARK SECTION ── */
+.pmark-section {
+  background: var(--surface-2);
+  padding: 52px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.pmark-inner {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.pmark-badge {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+  line-height: 1.4;
+}
+.pmark-badge small {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+.pmark-body { flex: 1; min-width: 220px; }
+.pmark-body h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 7px;
+  line-height: 1.4;
+}
+.pmark-body p {
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.8;
+}
+
+/* ── CONTACT SECTION ── */
+.contact-section {
+  background: var(--surface);
+  padding: 80px 0;
+}
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 44px;
+  margin-top: 44px;
+  align-items: start;
+}
+.contact-form-box {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.form-group:last-of-type { margin-bottom: 0; }
+.form-group.full { grid-column: 1 / -1; }
+label { font-size: 13px; font-weight: 700; color: var(--text); }
+label .req {
+  display: inline-block;
+  background: #D03030;
+  color: #FFF;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+label .opt {
+  display: inline-block;
+  background: var(--surface-2);
+  color: var(--text-light);
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+  vertical-align: middle;
+  border: 1px solid var(--border);
+}
+input[type=text], input[type=email], input[type=tel], select, textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--surface);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(26,95,168,0.12);
+}
+textarea { min-height: 100px; resize: vertical; }
+.form-submit { margin-top: 22px; }
+.submit-btn {
+  width: 100%;
+  background: #0E3460;
+  color: #FFF;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 15px 24px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: opacity 0.2s;
+}
+.submit-btn:hover { opacity: 0.86; }
+.form-note {
+  font-size: 12px;
+  color: var(--text-light);
+  margin-top: 10px;
+  text-align: center;
+  line-height: 1.65;
+}
+.contact-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.contact-intro {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.85;
+}
+.phone-box {
+  background: #0E3460;
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  text-align: center;
+}
+.phone-label { font-size: 12px; color: rgba(255,255,255,0.55); margin-bottom: 8px; }
+.phone-num {
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 700;
+  color: #FFF;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 5px;
+}
+.phone-free {
+  display: inline-block;
+  background: rgba(168,112,24,0.3);
+  color: #FFE0A0;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.phone-meta { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+.info-box {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+}
+.info-box h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.info-box p {
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.8;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #060F1E;
+  padding: 44px 28px 32px;
+}
+.footer-inner {
+  max-width: 920px;
+  margin: 0 auto;
+}
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 20px;
+}
+.footer-logo {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  line-height: 1.3;
+}
+.footer-logo small {
+  display: block;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.35);
+  margin-top: 4px;
+}
+.footer-links-group { display: flex; flex-direction: column; gap: 8px; }
+.footer-links-group h5 {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.3);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.footer-links-group a {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-links-group a:hover { color: rgba(255,255,255,0.85); }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-copy { font-size: 11px; color: rgba(255,255,255,0.25); }
+.footer-pmark { font-size: 11px; color: rgba(255,255,255,0.3); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 760px) {
+  .topnav { padding: 0 18px; }
+  .nav-center { display: none; }
+  .nav-tel { display: none; }
+  .hero { padding: 64px 20px 72px; }
+  .hero-deco { display: none; }
+  .industry-grid { grid-template-columns: 1fr; }
+  .strengths-grid { grid-template-columns: 1fr; }
+  .metrics-row { grid-template-columns: repeat(2, 1fr); }
+  .contact-layout { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .container { padding: 0 20px; }
+  .footer-top { flex-direction: column; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+@media (max-width: 480px) {
+  .hero-btns { flex-direction: column; align-items: flex-start; }
+  .metrics-row { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPNAV -->
+<nav class="topnav" id="topnav">
+  <a href="/" class="nav-logo">
+    アンケートまるごとサポート
+    <small>（株）東海共同印刷 運営</small>
+  </a>
+  <div class="nav-center">
+    <a href="#industry" class="nav-link">業種別サービス</a>
+    <a href="#process" class="nav-link">サービスの流れ</a>
+    <a href="#strength" class="nav-link">強み・実績</a>
+    <a href="#contact" class="nav-link">お問い合わせ</a>
+  </div>
+  <div class="nav-right">
+    <a href="tel:0120935040" class="nav-tel">
+      0120-935-040
+      <small>平日 9:00〜17:30 無料</small>
+    </a>
+    <a href="#contact" class="nav-cta">無料相談する</a>
+    <button class="nav-theme-btn" id="themeToggle" aria-label="テーマ切替">🌙</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-deco" aria-hidden="true">調</div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Survey Support Service</div>
+    <h1>アンケートの<em>全工程</em>を、<br>一社でまるごとお任せください</h1>
+    <p class="hero-lead">
+      調査票の設計・印刷・発送から、回収・データ化・集計・報告書作成まで。
+      プライバシーマーク取得の社内一貫体制で、担当者の負担をゼロに近づけます。
+    </p>
+    <div class="hero-btns">
+      <a href="#industry" class="btn-gold">業種別ページを見る →</a>
+      <a href="#contact" class="btn-ghost">無料相談・お見積もり</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-chip"><div class="trust-dot">✓</div>2011年〜の実績</div>
+      <div class="trust-chip"><div class="trust-dot">✓</div>プライバシーマーク取得</div>
+      <div class="trust-chip"><div class="trust-dot">✓</div>社内一貫処理でデータ安全</div>
+      <div class="trust-chip"><div class="trust-dot">✓</div>紙・Web・ハイブリッド対応</div>
+      <div class="trust-chip"><div class="trust-dot">✓</div>見積もり・相談無料</div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRY SECTION -->
+<section class="industry-section" id="industry">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="sec-eyebrow">業種別サービス</p>
+      <h2 class="sec-title">ご担当の業種をお選びください</h2>
+      <p class="sec-lead">各業種の担当者が日常で直面する課題に特化した専用ページをご用意しています。</p>
+    </div>
+    <div class="industry-grid fade-in">
+
+      <a href="academic_lp.html" class="industry-card card-academic">
+        <div class="card-icon">🎓</div>
+        <div class="card-tag">Academic</div>
+        <div class="card-title">学術調査・<br>大学・研究機関向け</div>
+        <div class="card-desc">論文・紀要・報告書のためのアンケート調査を全工程で支援。科研費（KAKENHI）対応や倫理審査スケジュールへの柔軟な対応が強みです。</div>
+        <div class="card-targets">
+          <span class="card-target-chip">研究者（PI）</span>
+          <span class="card-target-chip">事務担当者</span>
+          <span class="card-target-chip">研究補助員</span>
+        </div>
+        <div class="card-cta">詳しく見る <div class="cta-arrow">›</div></div>
+      </a>
+
+      <a href="union_lp.html" class="industry-card card-union">
+        <div class="card-icon">🤝</div>
+        <div class="card-tag">Labor Union</div>
+        <div class="card-title">労働組合・<br>書記局担当者向け</div>
+        <div class="card-desc">組合員アンケートの設計から定期大会向け報告書まで一括代行。組合員番号・職場コードによるクロス集計に対応します。</div>
+        <div class="card-targets">
+          <span class="card-target-chip">書記長・書記次長</span>
+          <span class="card-target-chip">教宣担当</span>
+        </div>
+        <div class="card-cta">詳しく見る <div class="cta-arrow">›</div></div>
+      </a>
+
+      <a href="kaigo_lp.html" class="industry-card card-kaigo">
+        <div class="card-icon">🏥</div>
+        <div class="card-tag">Medical &amp; Care</div>
+        <div class="card-title">医療・介護施設・<br>患者満足度調査向け</div>
+        <div class="card-desc">第三者機関が回収・管理することで、患者・利用者が率直に回答できる環境を整えます。施設長・事務長・看護部長のお悩みに対応。</div>
+        <div class="card-targets">
+          <span class="card-target-chip">施設長・事務長</span>
+          <span class="card-target-chip">看護部長</span>
+          <span class="card-target-chip">介護主任</span>
+        </div>
+        <div class="card-cta">詳しく見る <div class="cta-arrow">›</div></div>
+      </a>
+
+      <a href="nokyo_lp.html" class="industry-card card-nokyo">
+        <div class="card-icon">🌾</div>
+        <div class="card-tag">JA / Co-op</div>
+        <div class="card-title">農協・生協・<br>組合員ニーズ調査向け</div>
+        <div class="card-desc">広域エリアへの郵送発送から地区・支所別クロス集計まで対応。総代会・理事会向けの報告書作成もお任せください。</div>
+        <div class="card-targets">
+          <span class="card-target-chip">組合員担当</span>
+          <span class="card-target-chip">企画担当</span>
+          <span class="card-target-chip">JA・生協スタッフ</span>
+        </div>
+        <div class="card-cta">詳しく見る <div class="cta-arrow">›</div></div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS SECTION -->
+<section class="process-section" id="process">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="sec-eyebrow">サービスの流れ</p>
+      <h2 class="sec-title">調査の全工程を、一社で</h2>
+      <p class="sec-lead">複数業者へのバラバラな発注が不要。窓口一本で全工程をカバーします。</p>
+    </div>
+    <div class="process-scroll fade-in">
+      <div class="process-track">
+        <div class="process-step">
+          <div class="step-node">📝</div>
+          <div class="step-name">調査票<br>設計</div>
+          <div class="step-hint">設問・レイアウト<br>ID付与</div>
+        </div>
+        <div class="process-step">
+          <div class="step-node">🖨️</div>
+          <div class="step-name">印刷・<br>資材準備</div>
+          <div class="step-hint">封筒・依頼状<br>冊子対応</div>
+        </div>
+        <div class="process-step">
+          <div class="step-node">📬</div>
+          <div class="step-name">全国<br>発送</div>
+          <div class="step-hint">一斉・個別発送<br>督促状対応</div>
+        </div>
+        <div class="process-step">
+          <div class="step-node">📥</div>
+          <div class="step-name">回収<br>管理</div>
+          <div class="step-hint">私書箱受取<br>回収率管理</div>
+        </div>
+        <div class="process-step">
+          <div class="step-node">🔍</div>
+          <div class="step-name">データ化<br>精度保証</div>
+          <div class="step-hint">目視補正<br>矛盾チェック</div>
+        </div>
+        <div class="process-step">
+          <div class="step-node">📊</div>
+          <div class="step-name">集計・<br>分析</div>
+          <div class="step-hint">クロス集計<br>グラフ作成</div>
+        </div>
+        <div class="process-step">
+          <div class="step-node">📄</div>
+          <div class="step-name">報告書<br>納品</div>
+          <div class="step-hint">論文用・大会用<br>CSV/Excel</div>
+        </div>
+      </div>
+    </div>
+    <div class="process-note fade-in">
+      <div class="process-note-icon">💡</div>
+      <div>Webアンケートの構築・配信・集計にも対応。紙と併用するハイブリッド方式で回収率を高める提案もできます。すべての工程を社内一貫処理するため、データが外部に転送されることはありません。</div>
+    </div>
+  </div>
+</section>
+
+<!-- STRENGTHS SECTION -->
+<section class="strengths-section" id="strength">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="sec-eyebrow">強み・特長</p>
+      <h2 class="sec-title">一般のアンケート代行会社と<br>ここが違います</h2>
+      <p class="sec-lead">印刷会社として培った社内一貫生産体制と、業種ごとの調査ノウハウが強みです。</p>
+    </div>
+    <div class="strengths-grid fade-in">
+      <div class="strength-card">
+        <div class="strength-icon">🔒</div>
+        <div class="strength-title">プライバシーマーク取得・社内一貫処理</div>
+        <div class="strength-body">印刷から集計まで社内で完結。個人情報が外部に出ることなく、高い安全基準でデータを管理します。（Pマーク No.24000347）</div>
+      </div>
+      <div class="strength-card">
+        <div class="strength-icon">🏭</div>
+        <div class="strength-title">印刷会社だから実現できる品質とスピード</div>
+        <div class="strength-body">調査票の設計・印刷から発送まで自社完結。別会社への依頼が不要なため、スケジュール管理がシンプルで納期遅延リスクが低くなります。</div>
+      </div>
+      <div class="strength-card">
+        <div class="strength-icon">📐</div>
+        <div class="strength-title">業種ごとの専門ノウハウ</div>
+        <div class="strength-body">科研費対応・倫理審査スケジュール・大会逆算納期・第三者評価対応など、業種固有の事情を熟知した担当者が伴走します。</div>
+      </div>
+      <div class="strength-card">
+        <div class="strength-icon">📮</div>
+        <div class="strength-title">郵送調査のノウハウが豊富</div>
+        <div class="strength-body">督促ハガキの送付タイミング、私書箱回収、Web併用による回収率向上など、郵送調査特有のノウハウで目標回収率を追求します。</div>
+      </div>
+      <div class="strength-card">
+        <div class="strength-icon">📈</div>
+        <div class="strength-title">経年比較・多軸クロス集計</div>
+        <div class="strength-body">前回データとの比較グラフや、地域別・属性別など複数の軸を組み合わせたクロス集計で、意思決定に使えるデータを提供します。</div>
+      </div>
+      <div class="strength-card">
+        <div class="strength-icon">💬</div>
+        <div class="strength-title">設計段階からの相談を歓迎</div>
+        <div class="strength-body">「設問がまだ固まっていない」「何を聞けばよいかわからない」という段階からご相談ください。担当者が丁寧にヒアリングします。</div>
+      </div>
+    </div>
+  </div>
+  <div class="metrics-band">
+    <div class="container">
+      <div class="metrics-row fade-in">
+        <div class="metric-cell">
+          <div class="metric-num">2011</div>
+          <div class="metric-label">年からサービス開始<br>長年の実績</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-num">Pマーク</div>
+          <div class="metric-label">プライバシーマーク<br>No.24000347</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-num">20校+</div>
+          <div class="metric-label">取引実績のある<br>大学・研究機関</div>
+        </div>
+        <div class="metric-cell">
+          <div class="metric-num">社内</div>
+          <div class="metric-label">一貫処理で<br>データ安全</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PMARK SECTION -->
+<section class="pmark-section">
+  <div class="container">
+    <div class="pmark-inner fade-in">
+      <div class="pmark-badge">
+        🔒 プライバシーマーク取得
+        <small>No.24000347</small>
+      </div>
+      <div class="pmark-body">
+        <h3>個人情報保護の体制について</h3>
+        <p>調査対象者の氏名・住所・回答内容などの個人情報は、プライバシーマーク取得済みの社内一貫体制で管理します。印刷・発送・回収・データ化・集計のすべての工程を社内で完結させることにより、外部への不必要なデータ転送を行いません。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="section-header fade-in">
+      <p class="sec-eyebrow">無料相談・お見積もり</p>
+      <h2 class="sec-title">まずはお気軽にご相談ください</h2>
+      <p class="sec-lead">「こんなアンケートはできる？」という段階でも歓迎します。2営業日以内にご連絡いたします。</p>
+    </div>
+    <div class="contact-layout fade-in">
+      <div class="contact-form-box">
+        <div class="form-row">
+          <div class="form-group">
+            <label>組織名・施設名 <span class="req">必須</span></label>
+            <input type="text" placeholder="○○大学 / △△労働組合">
+          </div>
+          <div class="form-group">
+            <label>お名前 <span class="req">必須</span></label>
+            <input type="text" placeholder="山田 太郎">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>メールアドレス <span class="req">必須</span></label>
+            <input type="email" placeholder="yamada@example.jp">
+          </div>
+          <div class="form-group">
+            <label>電話番号 <span class="opt">任意</span></label>
+            <input type="tel" placeholder="052-XXX-XXXX">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>業種 <span class="opt">任意</span></label>
+            <select>
+              <option value="">選択してください</option>
+              <option>大学・研究機関（学術調査）</option>
+              <option>労働組合</option>
+              <option>病院・医療機関</option>
+              <option>介護・福祉施設</option>
+              <option>農業協同組合（JA）</option>
+              <option>生活協同組合（生協）</option>
+              <option>自治体・行政</option>
+              <option>その他</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>調査対象の規模 <span class="opt">任意</span></label>
+            <select>
+              <option value="">選択してください</option>
+              <option>〜200人</option>
+              <option>200〜500人</option>
+              <option>500〜1,000人</option>
+              <option>1,000〜3,000人</option>
+              <option>3,000人以上</option>
+              <option>未定</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>ご相談内容</label>
+          <textarea placeholder="調査の目的・背景、お困りごと、ご予算感など、お気軽にご記入ください。"></textarea>
+        </div>
+        <div class="form-submit">
+          <button class="submit-btn">無料相談を申し込む →</button>
+          <p class="form-note">送信後2営業日以内に担当者よりご連絡いたします。<br>個人情報はプライバシーポリシーに従い適切に管理します。</p>
+        </div>
+      </div>
+      <div class="contact-aside">
+        <p class="contact-intro">お見積もりは無料です。業種別のLPページに掲載の参考料金もご参考にどうぞ。まずはお気軽にお電話またはフォームからお声がけください。</p>
+        <div class="phone-box">
+          <p class="phone-label">お電話でのご相談はこちら</p>
+          <a href="tel:0120935040" class="phone-num">📞 0120-935-040</a>
+          <div class="phone-free">フリーダイヤル・通話無料</div>
+          <p class="phone-meta">担当：花木（はなき）・都築<br>平日 9:00〜17:30</p>
+        </div>
+        <div class="info-box">
+          <h4>運営会社</h4>
+          <p>
+            東海共同印刷株式会社<br>
+            〒467-0071 愛知県名古屋市瑞穂区<br>
+            プライバシーマーク No.24000347
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <a href="/" class="footer-logo">
+        アンケートまるごとサポート
+        <small>東海共同印刷株式会社 運営</small>
+      </a>
+      <div class="footer-links-group">
+        <h5>業種別サービス</h5>
+        <a href="academic_lp.html">学術調査・大学・研究機関向け</a>
+        <a href="union_lp.html">労働組合向け</a>
+        <a href="kaigo_lp.html">医療・介護施設向け</a>
+        <a href="nokyo_lp.html">農協・生協向け</a>
+      </div>
+      <div class="footer-links-group">
+        <h5>サポート</h5>
+        <a href="https://www.survey-support.jp/privacy_policy">プライバシーポリシー</a>
+        <a href="https://www.tkp.co.jp/">東海共同印刷株式会社</a>
+        <a href="#contact">お問い合わせ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 東海共同印刷株式会社　All Rights Reserved.</p>
+      <p class="footer-pmark">🔒 プライバシーマーク取得事業者 No.24000347</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Scroll shadow on nav */
+const nav = document.getElementById('topnav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
+
+/* Fade-in observer */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 60);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+/* Theme toggle */
+const themeBtn = document.getElementById('themeToggle');
+const root = document.documentElement;
+const getSystem = () => window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+let current = localStorage.getItem('theme') || getSystem();
+function applyTheme(t) {
+  root.setAttribute('data-theme', t);
+  themeBtn.textContent = t === 'dark' ? '☀️' : '🌙';
+  localStorage.setItem('theme', t);
+  current = t;
+}
+applyTheme(current);
+themeBtn.addEventListener('click', () => applyTheme(current === 'dark' ? 'light' : 'dark'));
+</script>
+</body>
+</html>
