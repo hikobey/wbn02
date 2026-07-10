@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>労働組合のアンケート調査・集計代行 ｜ アンケートまるごとサポート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #1a5fa8;
+  --primary-dark: #0f3d70;
+  --primary-light: #e8f1fb;
+  --accent: #e8a020;
+  --accent-light: #fdf3e0;
+  --text: #1a1a2e;
+  --text-mid: #4a4a6a;
+  --text-light: #7a7a9a;
+  --bg: #f7f8fc;
+  --white: #ffffff;
+  --border: #dde3f0;
+  --success: #1a7a4a;
+  --success-bg: #eaf5ef;
+  --serif: 'Noto Serif JP', serif;
+  --sans: 'Noto Sans JP', sans-serif;
+  --radius: 8px;
+  --radius-lg: 16px;
+  --shadow: 0 2px 16px rgba(26,95,168,0.08);
+  --shadow-md: 0 4px 24px rgba(26,95,168,0.13);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  font-size: 16px;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── MINIMAL NAV ── */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+.topbar-logo {
+  font-family: var(--serif);
+  font-size: 14px;
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: .02em;
+}
+.topbar-logo span { color: var(--text-light); font-weight: 400; font-size: 12px; display: block; }
+.topbar-cta {
+  background: var(--accent);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: opacity .2s;
+  white-space: nowrap;
+}
+.topbar-cta:hover { opacity: .85; }
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, #0f3d70 0%, #1a5fa8 55%, #2176c8 100%);
+  padding: 72px 24px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 16px;
+  border-radius: 50px;
+  margin-bottom: 24px;
+  letter-spacing: .05em;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(22px, 4vw, 36px);
+  color: #fff;
+  line-height: 1.5;
+  font-weight: 700;
+  margin-bottom: 20px;
+  position: relative;
+}
+.hero h1 em {
+  font-style: normal;
+  color: #ffd770;
+  border-bottom: 2px solid #ffd770;
+}
+.hero-lead {
+  color: rgba(255,255,255,0.85);
+  font-size: clamp(14px, 2vw, 16px);
+  max-width: 600px;
+  margin: 0 auto 36px;
+  line-height: 1.8;
+}
+.hero-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  background: var(--accent);
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 20px rgba(232,160,32,0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(232,160,32,0.5); }
+.btn-ghost {
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 14px 28px;
+  border-radius: 50px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.5);
+  transition: background .2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.1); }
+.hero-trust {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(255,255,255,0.8);
+  font-size: 13px;
+}
+.trust-icon {
+  width: 20px;
+  height: 20px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+/* ── CONTAINER ── */
+.container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+/* ── SECTION COMMON ── */
+section { padding: 64px 0; }
+.sec-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  color: var(--primary);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.sec-title {
+  font-family: var(--serif);
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+.sec-lead {
+  color: var(--text-mid);
+  font-size: 15px;
+  line-height: 1.8;
+  max-width: 620px;
+}
+
+/* ── PAIN SECTION ── */
+.pain-section { background: var(--white); }
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 36px;
+}
+.pain-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  position: relative;
+}
+.pain-card::before {
+  content: attr(data-num);
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 50px;
+  letter-spacing: .05em;
+}
+.pain-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+  margin-top: 4px;
+}
+.pain-card p { font-size: 14px; color: var(--text-mid); line-height: 1.7; }
+
+/* ── SOLUTION ── */
+.solution-section { background: var(--primary-light); }
+.flow-steps {
+  display: flex;
+  gap: 0;
+  margin-top: 40px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+.flow-step {
+  flex: 1;
+  min-width: 100px;
+  text-align: center;
+  position: relative;
+}
+.flow-step:not(:last-child)::after {
+  content: '▶';
+  position: absolute;
+  right: -10px;
+  top: 22px;
+  font-size: 14px;
+  color: var(--primary);
+  z-index: 1;
+}
+.flow-circle {
+  width: 48px;
+  height: 48px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin: 0 auto 10px;
+}
+.flow-step-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  line-height: 1.4;
+}
+.flow-step-sub {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 3px;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 36px;
+}
+.service-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  border-top: 3px solid var(--primary);
+}
+.service-icon { font-size: 28px; margin-bottom: 12px; }
+.service-card h3 { font-size: 15px; font-weight: 700; color: var(--primary-dark); margin-bottom: 8px; }
+.service-card p { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+
+/* ── UNION SPECIFIC ── */
+.union-section { background: var(--white); }
+.union-points {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 36px;
+}
+.union-point {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px;
+  background: var(--bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+.union-num {
+  width: 32px;
+  height: 32px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.union-point h3 { font-size: 14px; font-weight: 700; margin-bottom: 5px; }
+.union-point p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+/* ── TRUST ── */
+.trust-section { background: var(--primary-dark); padding: 56px 0; }
+.trust-section .sec-label { color: #ffd770; }
+.trust-section .sec-title { color: #fff; }
+.trust-section .sec-lead { color: rgba(255,255,255,0.7); }
+.trust-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin-top: 40px;
+}
+.metric {
+  text-align: center;
+  padding: 24px 16px;
+  background: rgba(255,255,255,0.07);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.metric-num {
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffd770;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.metric-label { font-size: 12px; color: rgba(255,255,255,0.7); line-height: 1.4; }
+.pmark-box {
+  margin-top: 36px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius-lg);
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.pmark-badge {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 12px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.pmark-text { color: rgba(255,255,255,0.8); font-size: 14px; line-height: 1.7; flex: 1; min-width: 200px; }
+
+/* ── PRICE ── */
+.price-section { background: var(--bg); }
+.price-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 36px;
+}
+.price-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  box-shadow: var(--shadow);
+}
+.price-card.featured {
+  border-color: var(--primary);
+  border-width: 2px;
+  position: relative;
+}
+.price-card.featured::before {
+  content: '最多ご依頼';
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 14px;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+.price-tier { font-size: 12px; font-weight: 700; color: var(--primary); letter-spacing: .05em; margin-bottom: 6px; }
+.price-range-name { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.price-members { font-size: 13px; color: var(--text-mid); margin-bottom: 16px; }
+.price-amount {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 4px;
+}
+.price-amount span { font-size: 13px; font-weight: 400; color: var(--text-light); }
+.price-includes {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.price-includes li {
+  font-size: 12px;
+  color: var(--text-mid);
+  list-style: none;
+  padding: 3px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+.price-includes li::before {
+  content: '✓';
+  color: var(--success);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.price-note {
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--text-light);
+  text-align: center;
+}
+
+/* ── FAQ ── */
+.faq-section { background: var(--white); }
+.faq-list { margin-top: 36px; }
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.faq-q {
+  padding: 18px 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--white);
+  transition: background .2s;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  user-select: none;
+}
+.faq-q:hover { background: var(--primary-light); }
+.faq-q-text { flex: 1; line-height: 1.5; }
+.faq-q-text::before {
+  content: 'Q';
+  display: inline-block;
+  background: var(--primary);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 4px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.faq-toggle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+  transition: transform .3s;
+}
+.faq-item.open .faq-toggle { transform: rotate(45deg); }
+.faq-a {
+  display: none;
+  padding: 0 24px 18px 24px;
+  font-size: 14px;
+  color: var(--text-mid);
+  line-height: 1.8;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+.faq-a::before {
+  content: 'A';
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 4px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.faq-item.open .faq-a { display: block; }
+
+/* ── CTA FORM ── */
+.cta-section {
+  background: linear-gradient(135deg, #0f3d70, #1a5fa8);
+  padding: 72px 0;
+}
+.cta-section .sec-label { color: #ffd770; }
+.cta-section .sec-title { color: #fff; }
+.cta-section .sec-lead { color: rgba(255,255,255,0.8); }
+.form-wrap {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  margin-top: 40px;
+  box-shadow: var(--shadow-md);
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 560px) { .form-grid { grid-template-columns: 1fr; } }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group.full { grid-column: 1 / -1; }
+label { font-size: 13px; font-weight: 700; color: var(--text); }
+label .req {
+  display: inline-block;
+  background: #e53935;
+  color: #fff;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+input[type=text], input[type=email], input[type=tel], select, textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--white);
+  transition: border-color .2s, box-shadow .2s;
+  outline: none;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(26,95,168,0.12);
+}
+textarea { min-height: 100px; resize: vertical; }
+.form-submit {
+  margin-top: 24px;
+  text-align: center;
+}
+.submit-btn {
+  background: var(--accent);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 16px 48px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 20px rgba(232,160,32,0.35);
+  font-family: var(--sans);
+}
+.submit-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(232,160,32,0.45); }
+.form-note { font-size: 12px; color: var(--text-light); margin-top: 12px; }
+.tel-cta {
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.tel-label { font-size: 13px; color: var(--text-mid); margin-bottom: 6px; }
+.tel-num {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  letter-spacing: .03em;
+}
+.tel-hours { font-size: 12px; color: var(--text-light); margin-top: 4px; }
+
+/* ── FOOTER ── */
+footer {
+  background: #0a2545;
+  padding: 32px 24px;
+  text-align: center;
+  color: rgba(255,255,255,0.5);
+  font-size: 12px;
+}
+footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+
+/* ── ANIMATIONS ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.fade-in.visible { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  section { padding: 48px 0; }
+  .flow-steps { gap: 4px; }
+  .flow-step-label { font-size: 10px; }
+  .form-wrap { padding: 24px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav class="topbar">
+  <a href="https://www.survey-support.jp/" class="topbar-logo">
+    アンケートまるごとサポート
+    <span>（株）東海共同印刷</span>
+  </a>
+  <a href="#contact" class="topbar-cta">無料相談する</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">労働組合・産業別組合向け専用ページ</div>
+  <h1>組合員アンケートの<em>準備から報告書まで</em><br>書記局の負担をまるごと解決します</h1>
+  <p class="hero-lead">
+    調査票の設計・印刷・発送・回収・集計・報告書作成を一社で一括代行。<br>
+    プライバシーマーク取得の安心体制で、組合員の大切な声を守ります。
+  </p>
+  <div class="hero-btns">
+    <a href="#contact" class="btn-primary">📋 無料で相談する</a>
+    <a href="#price" class="btn-ghost">💰 料金の目安を見る</a>
+  </div>
+  <div class="hero-trust">
+    <div class="trust-item">
+      <div class="trust-icon">✓</div>
+      プライバシーマーク取得
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">✓</div>
+      2011年〜の実績
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">✓</div>
+      紙・Web両対応
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">✓</div>
+      社内一貫処理でデータ安全
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain-section">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-label">よくあるお困りごと</p>
+      <h2 class="sec-title">書記局担当者のこんなお悩み、<br>ありませんか？</h2>
+      <p class="sec-lead">毎年繰り返される組合員アンケート。「なんとか終わらせる」ことに精一杯で、肝心の「結果を活かす」時間がない——そんな現場の声をよく聞きます。</p>
+    </div>
+    <div class="pain-grid fade-in">
+      <div class="pain-card" data-num="お困りごと 01">
+        <h3>準備で通常業務が止まる</h3>
+        <p>調査票の印刷・封入・発送の手配だけで数週間。大会前の繁忙期と重なり、本来業務が後回しになる。</p>
+      </div>
+      <div class="pain-card" data-num="お困りごと 02">
+        <h3>複数業者の管理が煩雑</h3>
+        <p>印刷会社・発送業者・集計会社とそれぞれ打ち合わせが必要。スケジュール調整だけで疲弊してしまう。</p>
+      </div>
+      <div class="pain-card" data-num="お困りごと 03">
+        <h3>集計表を報告書にするのが大変</h3>
+        <p>数字の羅列を委員会・大会向けの読みやすいレポートに仕上げる作業が、毎回担当者の重荷になっている。</p>
+      </div>
+      <div class="pain-card" data-num="お困りごと 04">
+        <h3>個人情報の取り扱いが心配</h3>
+        <p>賃金・労働実態・組合活動への意見など、外部に漏れては困るデータを外部委託することへの不安がある。</p>
+      </div>
+      <div class="pain-card" data-num="お困りごと 05">
+        <h3>初めてで何から頼めばいいかわからない</h3>
+        <p>前任者からの引き継ぎが不十分で、業者選定の基準も費用感も把握できていない。</p>
+      </div>
+      <div class="pain-card" data-num="お困りごと 06">
+        <h3>回収率・精度に不安がある</h3>
+        <p>紙の調査票で回答率を確保する方法や、記入ミスを減らす設計のノウハウがない。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution-section">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-label">サービス概要</p>
+      <h2 class="sec-title">調査の全工程を、<br>一社でまるごとお任せください</h2>
+      <p class="sec-lead">設計から報告書まで、担当者が複数の業者と交渉する手間をゼロにします。</p>
+    </div>
+
+    <div class="flow-steps fade-in" style="margin-top:40px">
+      <div class="flow-step">
+        <div class="flow-circle">📝</div>
+        <div class="flow-step-label">調査票<br>設計</div>
+        <div class="flow-step-sub">設問・レイアウト</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-circle">🖨️</div>
+        <div class="flow-step-label">印刷・<br>資材準備</div>
+        <div class="flow-step-sub">封筒・依頼状</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-circle">📬</div>
+        <div class="flow-step-label">発送</div>
+        <div class="flow-step-sub">個人宅・職場</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-circle">📥</div>
+        <div class="flow-step-label">回収</div>
+        <div class="flow-step-sub">私書箱対応</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-circle">📊</div>
+        <div class="flow-step-label">集計<br>処理</div>
+        <div class="flow-step-sub">OCR+入力</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-circle">📄</div>
+        <div class="flow-step-label">報告書<br>作成</div>
+        <div class="flow-step-sub">大会資料対応</div>
+      </div>
+    </div>
+
+    <div class="service-grid fade-in">
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>調査票の設計・印刷</h3>
+        <p>記入しやすいマークシート形式の調査票を設計。組合員番号・職場コード入りの個票IDにも対応します。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📦</div>
+        <h3>封入・発送・回収</h3>
+        <p>依頼状・返信封筒の同梱から全国一斉発送まで。私書箱での直接回収にも対応しています。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💻</div>
+        <h3>Webアンケートの構築</h3>
+        <p>紙と併用したWebフォームの設計・配信管理にも対応。スマートフォンからも回答しやすい設計です。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📈</div>
+        <h3>集計・クロス分析</h3>
+        <p>単純集計はもちろん、職場別・年齢別・雇用形態別などのクロス集計グラフを作成します。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📑</div>
+        <h3>委員会・大会向け報告書</h3>
+        <p>数字の羅列ではなく、読みやすくまとめた報告書を作成。前回調査との経年比較にも対応します。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔒</div>
+        <h3>個人情報の安全管理</h3>
+        <p>プライバシーマーク取得済み。社内一貫処理でデータが外部に出ることなく安心してお任せいただけます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UNION SPECIFIC -->
+<section class="union-section">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-label">労働組合専門の強み</p>
+      <h2 class="sec-title">「組合のアンケート」ならではの<br>ノウハウがあります</h2>
+      <p class="sec-lead">一般のアンケート代行会社との違いは、労働組合の調査特有の事情を熟知している点です。</p>
+    </div>
+    <div class="union-points fade-in">
+      <div class="union-point">
+        <div class="union-num">1</div>
+        <div>
+          <h3>組合員番号・職場コードによるクロス集計</h3>
+          <p>支部別・職種別・雇用形態別など、労組ならではの分類軸で集計できます。</p>
+        </div>
+      </div>
+      <div class="union-point">
+        <div class="union-num">2</div>
+        <div>
+          <h3>無記名調査の安心設計</h3>
+          <p>回答者が「誰が書いたかバレない」と感じられる設計と運用ノウハウで、本音を引き出します。</p>
+        </div>
+      </div>
+      <div class="union-point">
+        <div class="union-num">3</div>
+        <div>
+          <h3>定期大会・委員会の日程に合わせた納期管理</h3>
+          <p>大会前の締め切りに合わせた逆算スケジュールを提案。納期遅延のリスクを最小化します。</p>
+        </div>
+      </div>
+      <div class="union-point">
+        <div class="union-num">4</div>
+        <div>
+          <h3>賃金・労働実態・意識調査の実績多数</h3>
+          <p>賃金実態、労働時間、ハラスメント、組合活動満足度など、労組特有の設問類型に豊富な経験があります。</p>
+        </div>
+      </div>
+      <div class="union-point">
+        <div class="union-num">5</div>
+        <div>
+          <h3>経年比較で変化を可視化</h3>
+          <p>前回・前々回のデータと比較したトレンドグラフで、組合活動の成果を組合員に示せます。</p>
+        </div>
+      </div>
+      <div class="union-point">
+        <div class="union-num">6</div>
+        <div>
+          <h3>初めての外注でも安心の伴走サポート</h3>
+          <p>設問の作り方がわからない段階からご相談可能。担当者が丁寧にヒアリングして最適な方法を提案します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust-section">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-label">実績と信頼</p>
+      <h2 class="sec-title">2011年から積み重ねた<br>アンケート支援の実績</h2>
+      <p class="sec-lead">労働組合・自治体・医療機関・大学研究室など、多様な組織からご依頼いただいています。</p>
+    </div>
+    <div class="trust-metrics fade-in">
+      <div class="metric">
+        <div class="metric-num">2011</div>
+        <div class="metric-label">年からサービス開始<br>長年の実績</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">Pマーク</div>
+        <div class="metric-label">プライバシーマーク<br>取得済み</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">一貫</div>
+        <div class="metric-label">社内完結処理で<br>データ漏洩リスクなし</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num">紙+Web</div>
+        <div class="metric-label">両対応・併用も<br>もちろんOK</div>
+      </div>
+    </div>
+    <div class="pmark-box fade-in">
+      <div class="pmark-badge">🔒 プライバシーマーク取得<br>No.24000347</div>
+      <p class="pmark-text">
+        組合員の賃金・労働実態・組合への意見など、外部に漏れてはならない個人情報を取り扱う調査だからこそ、プライバシーマーク取得と社内一貫処理による安全管理を徹底しています。データは外部の集計会社や印刷会社に転送されることはありません。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section class="price-section" id="price">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-label">料金の目安</p>
+      <h2 class="sec-title">組合員規模別・参考料金</h2>
+      <p class="sec-lead">実施内容によって変動しますが、最初の予算感の参考にご活用ください。お見積もりは無料です。</p>
+    </div>
+    <div class="price-cards fade-in">
+      <div class="price-card">
+        <div class="price-tier">SMALL</div>
+        <div class="price-range-name">小規模</div>
+        <div class="price-members">〜500人規模</div>
+        <div class="price-amount">15万円<span>〜（税別）</span></div>
+        <ul class="price-includes">
+          <li>調査票デザイン・印刷</li>
+          <li>封入・発送（一括）</li>
+          <li>OCR読込・単純集計</li>
+          <li>集計表（Excel）納品</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <div class="price-tier">STANDARD</div>
+        <div class="price-range-name">中規模</div>
+        <div class="price-members">1,000〜3,000人規模</div>
+        <div class="price-amount">50〜100万円<span>（税別）</span></div>
+        <ul class="price-includes">
+          <li>調査票デザイン・印刷</li>
+          <li>個別発送・私書箱回収</li>
+          <li>OCR読込・クロス集計</li>
+          <li>グラフ付き報告書作成</li>
+          <li>経年比較対応</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">LARGE</div>
+        <div class="price-range-name">大規模・産別組合</div>
+        <div class="price-members">5,000人〜</div>
+        <div class="price-amount">要お見積もり</div>
+        <ul class="price-includes">
+          <li>全工程一括対応</li>
+          <li>Web併用・ハイブリッド</li>
+          <li>多軸クロス分析</li>
+          <li>大会向け報告書・印刷</li>
+          <li>専任担当者をアサイン</li>
+        </ul>
+      </div>
+    </div>
+    <p class="price-note fade-in">※上記は参考目安です。設問数・回収方法・集計内容・報告書の有無などにより変動します。まずはお気軽にご相談ください。</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-label">よくあるご質問</p>
+      <h2 class="sec-title">労組担当者からよく<br>いただく質問</h2>
+    </div>
+    <div class="faq-list fade-in">
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">初めて外注します。設問の作り方がわからなくても依頼できますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">はい、もちろん大丈夫です。「何を知りたいか」「調査の目的」をお聞かせいただければ、設問の設計段階からサポートします。過去の類似調査の事例もご参考にご提示できます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">組合員が誰が書いたかわかるのでは、と心配しています。無記名を徹底できますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">個人が特定されないよう、回収・入力・集計の各工程で匿名化処理を行います。また、調査票の設計段階から「回答者が安心して本音を書ける」レイアウトや回収方法（返信封筒・私書箱など）をご提案します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">定期大会の2週間前に報告書が必要です。急ぎに対応できますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">大会・委員会の日程から逆算したスケジュールを最初にご提案します。回収期間の設定や督促ハガキの活用など、納期に合わせた段取りを一緒に考えます。まずはご相談ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">昨年まで他社に頼んでいました。前回のデータと比較できますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">前回のローデータ（Excel・CSVなど）をご提供いただければ、経年比較グラフを作成することが可能です。設問が変更になっている場合も、比較可能な項目だけで対応できます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">回収率が低くても集計できますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">もちろんです。また、回収率を上げるための工夫（督促ハガキ、QRコードでWeb回答を併用など）もご提案できます。設計段階から回収率を意識した取り組みが可能です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">紙とWebを併用したい場合も対応できますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a">はい、対応可能です。自宅にPCがない方向けの紙調査票と、スマートフォンで回答できるWebフォームを併用する形式が増えています。両方のデータを統合して集計・報告書を作成します。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FORM -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-label">無料相談・お見積もり</p>
+      <h2 class="sec-title">まずはお気軽にご相談ください</h2>
+      <p class="sec-lead">お見積もり・ご相談は無料です。「こんなアンケートはできる？」という段階でも歓迎します。2営業日以内にご連絡いたします。</p>
+    </div>
+    <div class="form-wrap fade-in">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>組合名・団体名 <span class="req">必須</span></label>
+          <input type="text" placeholder="○○産業労働組合">
+        </div>
+        <div class="form-group">
+          <label>担当者名 <span class="req">必須</span></label>
+          <input type="text" placeholder="山田 太郎">
+        </div>
+        <div class="form-group">
+          <label>メールアドレス <span class="req">必須</span></label>
+          <input type="email" placeholder="taro@union.or.jp">
+        </div>
+        <div class="form-group">
+          <label>電話番号</label>
+          <input type="tel" placeholder="052-XXX-XXXX">
+        </div>
+        <div class="form-group">
+          <label>組合員数（概算）</label>
+          <select>
+            <option value="">選択してください</option>
+            <option>〜300人</option>
+            <option>300〜1,000人</option>
+            <option>1,000〜3,000人</option>
+            <option>3,000〜5,000人</option>
+            <option>5,000人以上</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>調査の実施時期（予定）</label>
+          <select>
+            <option value="">選択してください</option>
+            <option>1ヶ月以内</option>
+            <option>3ヶ月以内</option>
+            <option>半年以内</option>
+            <option>1年以内</option>
+            <option>未定・検討中</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>ご相談内容</label>
+          <textarea placeholder="調査の目的、現在の困りごと、ご予算感など、お気軽にご記入ください。"></textarea>
+        </div>
+      </div>
+      <div class="form-submit">
+        <button class="submit-btn">無料相談を申し込む →</button>
+        <p class="form-note">送信後2営業日以内に担当者よりご連絡いたします。個人情報はプライバシーポリシーに従い適切に管理します。</p>
+      </div>
+      <div class="tel-cta">
+        <p class="tel-label">お電話でのご相談はこちら（無料）</p>
+        <div class="tel-num">📞 0120-935-040</div>
+        <p class="tel-hours">担当：花木（はなき）・都築　／　平日 9:00〜17:30</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>
+    <a href="https://www.survey-support.jp/">アンケートまるごとサポート</a>　／　
+    <a href="https://www.tkp.co.jp/">（株）東海共同印刷</a>　／　
+    <a href="https://www.survey-support.jp/privacy_policy">プライバシーポリシー</a>
+  </p>
+  <p style="margin-top:8px">© 東海共同印刷株式会社　All Rights Reserved.</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
