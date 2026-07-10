@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>学術調査アンケート 代行サービス ｜ アンケートまるごとサポート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #1a5fa8;
+  --primary-dark: #0f3d70;
+  --primary-mid: #1a5fa8cc;
+  --primary-light: #e8f1fb;
+  --primary-xlight: #f3f7fd;
+  --accent: #2a8a5a;
+  --accent-light: #e8f5ee;
+  --accent-mid: #3aaa70;
+  --gold: #c8960a;
+  --gold-light: #fdf6e0;
+  --text: #1a1a2e;
+  --text-mid: #4a4a6a;
+  --text-light: #8a8aaa;
+  --bg: #f5f7fc;
+  --white: #ffffff;
+  --border: #dde3f0;
+  --serif: 'Noto Serif JP', serif;
+  --sans: 'Noto Sans JP', sans-serif;
+  --radius: 8px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 8px rgba(26,95,168,0.07);
+  --shadow: 0 2px 16px rgba(26,95,168,0.10);
+  --shadow-md: 0 4px 28px rgba(26,95,168,0.14);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-size:16px;color:var(--text);background:var(--bg);line-height:1.75;-webkit-font-smoothing:antialiased}
+
+/* ── TOPBAR ── */
+.topbar{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.topbar-logo{font-family:var(--serif);font-size:14px;color:var(--primary);font-weight:700;text-decoration:none;line-height:1.3;flex-shrink:0}
+.topbar-logo span{color:var(--text-light);font-weight:400;font-size:11px;display:block}
+.topbar-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.topbar-tel{font-size:13px;color:var(--primary-dark);font-weight:700;text-decoration:none;white-space:nowrap}
+.topbar-tel span{font-size:11px;color:var(--text-light);font-weight:400;display:block;text-align:right}
+.topbar-cta{background:var(--accent);color:var(--white);font-size:13px;font-weight:700;padding:9px 20px;border-radius:50px;text-decoration:none;transition:opacity .2s;white-space:nowrap}
+.topbar-cta:hover{opacity:.85}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(140deg,#082a52 0%,#0f3d70 40%,#185fa8 75%,#1a6eb8 100%);padding:72px 24px 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(255,255,255,0.04) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(42,138,90,0.15) 0%,transparent 40%)}
+.hero-inner{position:relative;max-width:800px;margin:0 auto}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:28px}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:12px;font-weight:500;padding:5px 14px;border-radius:50px;letter-spacing:.03em}
+.hero-badge.gold{background:rgba(200,150,10,0.25);border-color:rgba(200,150,10,0.5);color:#ffd770}
+.hero h1{font-family:var(--serif);font-size:clamp(22px,4vw,38px);color:#fff;line-height:1.5;font-weight:700;margin-bottom:10px}
+.hero h1 em{font-style:normal;color:#7dd4a8;border-bottom:2px solid rgba(125,212,168,0.5)}
+.hero-sub{font-family:var(--serif);font-size:clamp(13px,2vw,16px);color:rgba(255,255,255,0.75);margin-bottom:10px;letter-spacing:.04em}
+.hero-univ{display:inline-block;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:var(--radius);padding:10px 20px;margin-bottom:32px;font-size:13px;color:rgba(255,255,255,0.85);line-height:1.6}
+.hero-univ strong{color:#ffd770;font-weight:700}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.btn-primary{background:var(--accent);color:#fff;font-size:15px;font-weight:700;padding:14px 32px;border-radius:50px;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(42,138,90,0.4);display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(42,138,90,0.5)}
+.btn-ghost{background:transparent;color:#fff;font-size:14px;font-weight:500;padding:14px 28px;border-radius:50px;text-decoration:none;border:1px solid rgba(255,255,255,0.45);transition:background .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-ghost:hover{background:rgba(255,255,255,0.1)}
+.hero-trust{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
+.htrust{display:flex;align-items:center;gap:7px;color:rgba(255,255,255,0.75);font-size:12px}
+.htrust-dot{width:18px;height:18px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;flex-shrink:0}
+
+/* ── SHARED ── */
+.container{max-width:880px;margin:0 auto;padding:0 24px}
+section{padding:68px 0}
+.sec-eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--primary);text-transform:uppercase;margin-bottom:10px}
+.sec-eyebrow.green{color:var(--accent)}
+.sec-title{font-family:var(--serif);font-size:clamp(20px,3vw,30px);font-weight:700;color:var(--text);line-height:1.4;margin-bottom:14px}
+.sec-lead{color:var(--text-mid);font-size:15px;line-height:1.85;max-width:640px}
+.fade-in{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:none}
+
+/* ── PAIN ── */
+.pain-section{background:var(--white)}
+.target-tabs{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:36px;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+.target-col{padding:28px 24px}
+.target-col:first-child{border-right:1px solid var(--border);background:var(--primary-xlight)}
+.target-col:last-child{background:#f3fbf6}
+.target-role{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;margin-bottom:16px;padding:5px 14px;border-radius:50px}
+.target-role.pi{background:var(--primary-light);color:var(--primary-dark)}
+.target-role.staff{background:var(--accent-light);color:var(--accent)}
+.pain-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.pain-list li{font-size:14px;color:var(--text-mid);padding:10px 14px;background:var(--white);border-radius:var(--radius);border:1px solid var(--border);line-height:1.6;display:flex;align-items:flex-start;gap:8px}
+.pain-list li::before{content:'…';color:var(--text-light);font-size:16px;flex-shrink:0;margin-top:-1px}
+@media(max-width:580px){.target-tabs{grid-template-columns:1fr}.target-col:first-child{border-right:none;border-bottom:1px solid var(--border)}}
+
+/* ── SOLUTION ── */
+.solution-section{background:var(--primary-xlight)}
+.flow-wrap{margin-top:40px;overflow-x:auto;padding-bottom:4px}
+.flow-track{display:flex;align-items:flex-start;gap:0;min-width:560px}
+.flow-step{flex:1;text-align:center;position:relative;padding:0 6px}
+.flow-step:not(:last-child)::after{content:'▶';position:absolute;right:-8px;top:20px;font-size:12px;color:var(--primary);z-index:1}
+.flow-circle{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;margin:0 auto 8px;background:var(--primary);color:#fff}
+.flow-label{font-size:11px;font-weight:700;color:var(--primary-dark);line-height:1.4}
+.flow-sub{font-size:10px;color:var(--text-light);margin-top:2px}
+.service-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:32px}
+.service-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;border-top:3px solid var(--primary);box-shadow:var(--shadow-sm)}
+.service-icon{font-size:26px;margin-bottom:10px}
+.service-card h3{font-size:14px;font-weight:700;color:var(--primary-dark);margin-bottom:7px}
+.service-card p{font-size:13px;color:var(--text-mid);line-height:1.7}
+.service-card .tag-green{display:inline-block;background:var(--accent-light);color:var(--accent);font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;margin-top:8px}
+
+/* ── ACADEMIC STRENGTHS ── */
+.strength-section{background:var(--white)}
+.strength-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:32px}
+.strength-card{border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 20px;background:var(--bg);display:flex;gap:14px;align-items:flex-start}
+.str-num{width:34px;height:34px;background:var(--primary);color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}
+.strength-card h3{font-size:14px;font-weight:700;margin-bottom:5px;color:var(--text)}
+.strength-card p{font-size:13px;color:var(--text-mid);line-height:1.65}
+.strength-card .badge{display:inline-block;background:var(--gold-light);color:var(--gold);font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-top:6px;border:1px solid rgba(200,150,10,0.2)}
+
+/* ── UNIVERSITIES ── */
+.univ-section{background:var(--primary-dark);padding:60px 0}
+.univ-section .sec-eyebrow{color:#7dd4a8}
+.univ-section .sec-title{color:#fff}
+.univ-section .sec-lead{color:rgba(255,255,255,0.7)}
+.univ-field-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:32px}
+.field-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius-lg);padding:18px 16px;text-align:center}
+.field-card-label{font-size:12px;color:rgba(255,255,255,0.6);margin-bottom:4px}
+.field-card-field{font-size:14px;font-weight:700;color:#fff;margin-bottom:8px}
+.field-card-count{font-family:var(--serif);font-size:28px;font-weight:700;color:#7dd4a8}
+.univ-list-wrap{margin-top:32px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-lg);padding:24px 28px}
+.univ-list-label{font-size:12px;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.univ-chips{display:flex;flex-wrap:wrap;gap:8px}
+.univ-chip{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);border-radius:6px;padding:5px 14px;font-size:13px;color:rgba(255,255,255,0.85);font-weight:500}
+.univ-chip.highlight{background:rgba(125,212,168,0.15);border-color:rgba(125,212,168,0.35);color:#7dd4a8}
+
+/* ── PRICE ── */
+.price-section{background:var(--bg)}
+.kakenhi-box{margin-bottom:28px;background:var(--gold-light);border:1px solid rgba(200,150,10,0.25);border-radius:var(--radius-lg);padding:18px 22px;display:flex;align-items:flex-start;gap:14px}
+.kakenhi-icon{font-size:24px;flex-shrink:0}
+.kakenhi-box h3{font-size:14px;font-weight:700;color:var(--gold);margin-bottom:4px}
+.kakenhi-box p{font-size:13px;color:#7a6010;line-height:1.65}
+.price-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-top:28px}
+.price-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px 20px;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
+.price-card.featured{border:2px solid var(--primary);position:relative}
+.price-card.featured::before{content:'よく選ばれます';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--primary);color:#fff;font-size:11px;font-weight:700;padding:3px 14px;border-radius:50px;white-space:nowrap}
+.price-method{font-size:11px;font-weight:700;color:var(--primary);letter-spacing:.05em;margin-bottom:4px}
+.price-name{font-size:15px;font-weight:700;margin-bottom:2px}
+.price-scale{font-size:13px;color:var(--text-light);margin-bottom:14px}
+.price-amount{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--primary-dark);line-height:1.2;margin-bottom:4px}
+.price-amount span{font-size:13px;font-weight:400;color:var(--text-light)}
+.price-divider{border:none;border-top:1px solid var(--border);margin:14px 0}
+.price-includes{list-style:none;display:flex;flex-direction:column;gap:5px;flex:1}
+.price-includes li{font-size:12px;color:var(--text-mid);display:flex;align-items:flex-start;gap:6px;line-height:1.5}
+.price-includes li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0}
+.price-note{margin-top:20px;font-size:13px;color:var(--text-light);text-align:center;line-height:1.7}
+
+/* ── FAQ ── */
+.faq-section{background:var(--white)}
+.faq-list{margin-top:32px;display:flex;flex-direction:column;gap:10px}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+.faq-q{padding:18px 22px;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:14px;background:var(--white);transition:background .2s;user-select:none}
+.faq-q:hover{background:var(--primary-xlight)}
+.faq-q-text{font-size:14px;font-weight:700;color:var(--text);line-height:1.5;flex:1}
+.faq-q-text::before{content:'Q';display:inline-block;background:var(--primary);color:#fff;font-size:10px;font-weight:700;padding:1px 7px;border-radius:4px;margin-right:10px;vertical-align:middle}
+.faq-toggle{width:24px;height:24px;border-radius:50%;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;transition:transform .3s}
+.faq-item.open .faq-toggle{transform:rotate(45deg)}
+.faq-a{display:none;padding:16px 22px 18px;font-size:14px;color:var(--text-mid);line-height:1.8;border-top:1px solid var(--border)}
+.faq-a-inner::before{content:'A';display:inline-block;background:var(--accent);color:#fff;font-size:10px;font-weight:700;padding:1px 7px;border-radius:4px;margin-right:10px;vertical-align:middle}
+.faq-item.open .faq-a{display:block}
+
+/* ── CTA / FORM ── */
+.cta-section{background:linear-gradient(140deg,#082a52,#0f3d70 50%,#1a5fa8);padding:72px 0}
+.cta-section .sec-eyebrow{color:#7dd4a8}
+.cta-section .sec-title{color:#fff}
+.cta-section .sec-lead{color:rgba(255,255,255,0.78)}
+.form-wrap{background:var(--white);border-radius:var(--radius-lg);padding:40px;margin-top:40px;box-shadow:var(--shadow-md)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:560px){.form-grid{grid-template-columns:1fr}}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group.full{grid-column:1/-1}
+label{font-size:13px;font-weight:700;color:var(--text)}
+label .req{display:inline-block;background:#d63031;color:#fff;font-size:10px;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle}
+label .opt{display:inline-block;background:var(--bg);color:var(--text-light);font-size:10px;padding:1px 6px;border-radius:3px;margin-left:6px;vertical-align:middle;border:1px solid var(--border)}
+input[type=text],input[type=email],input[type=tel],select,textarea{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius);font-size:14px;font-family:var(--sans);color:var(--text);background:var(--white);transition:border-color .2s,box-shadow .2s;outline:none;-webkit-appearance:none}
+input:focus,select:focus,textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(26,95,168,0.10)}
+textarea{min-height:90px;resize:vertical}
+.form-submit{margin-top:24px;text-align:center}
+.submit-btn{background:var(--accent);color:#fff;font-size:16px;font-weight:700;padding:16px 48px;border-radius:50px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(42,138,90,0.35);font-family:var(--sans)}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(42,138,90,0.45)}
+.form-note{font-size:12px;color:var(--text-light);margin-top:12px;line-height:1.7}
+.tel-cta{margin-top:28px;padding-top:28px;border-top:1px solid var(--border);text-align:center}
+.tel-label{font-size:13px;color:var(--text-mid);margin-bottom:5px}
+.tel-num{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--primary-dark);letter-spacing:.03em}
+.tel-hours{font-size:12px;color:var(--text-light);margin-top:4px}
+.kakenhi-note{margin-top:16px;background:var(--gold-light);border:1px solid rgba(200,150,10,0.22);border-radius:var(--radius);padding:12px 16px;font-size:13px;color:#7a6010;line-height:1.6}
+.kakenhi-note strong{color:var(--gold)}
+
+/* ── FOOTER ── */
+footer{background:#061c36;padding:28px 24px;text-align:center;color:rgba(255,255,255,0.45);font-size:12px}
+footer a{color:rgba(255,255,255,0.55);text-decoration:none}
+footer a:hover{color:rgba(255,255,255,0.8)}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav class="topbar">
+  <a href="https://www.survey-support.jp/" class="topbar-logo">
+    アンケートまるごとサポート
+    <span>（株）東海共同印刷 運営</span>
+  </a>
+  <div class="topbar-right">
+    <a href="tel:0120935040" class="topbar-tel">
+      0120-935-040
+      <span>平日 9:00〜17:30 無料</span>
+    </a>
+    <a href="#contact" class="topbar-cta">無料相談する</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badges">
+      <span class="hero-badge gold">🎓 科研費（KAKENHI）対応OK</span>
+      <span class="hero-badge">📋 倫理審査スケジュール対応</span>
+      <span class="hero-badge">🔒 プライバシーマーク取得</span>
+      <span class="hero-badge">📄 紙・Web・併用すべて対応</span>
+    </div>
+    <p class="hero-sub">大学・研究機関向け　学術調査アンケート代行サービス</p>
+    <h1>調査の設計から集計・納品まで<br><em>研究者の「調査業務」をまるごと代行</em>します</h1>
+    <div class="hero-univ">
+      <strong>東京大学・名古屋大学・横浜国立大学</strong>など<strong>全国20以上</strong>の大学・研究機関にご利用いただいています
+    </div>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">📬 無料で相談する</a>
+      <a href="#price" class="btn-ghost">💴 料金の目安を見る</a>
+    </div>
+    <div class="hero-trust">
+      <div class="htrust"><div class="htrust-dot">✓</div>2011年〜の実績</div>
+      <div class="htrust"><div class="htrust-dot">✓</div>社内一貫処理でデータ安全</div>
+      <div class="htrust"><div class="htrust-dot">✓</div>論文・報告書用データ形式で納品</div>
+      <div class="htrust"><div class="htrust-dot">✓</div>お見積もり・ご相談無料</div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain-section">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-eyebrow">よくあるお困りごと</p>
+      <h2 class="sec-title">研究者・事務担当者、<br>どちらのお悩みにも対応します</h2>
+      <p class="sec-lead">学術調査は「研究者（PI）」と「事務担当者」が連携して進めます。それぞれの立場の課題を解決できるよう、全工程をサポートします。</p>
+    </div>
+    <div class="target-tabs fade-in">
+      <div class="target-col">
+        <div class="target-role pi">👩‍🔬 研究者（PI・研究員）の悩み</div>
+        <ul class="pain-list">
+          <li>調査票の印刷・発送に研究補助員を使うのが申し訳ない</li>
+          <li>論文執筆・分析に集中したいのに事務作業に時間を取られる</li>
+          <li>倫理審査が通った後、調査開始まで時間がなく焦る</li>
+          <li>データの精度が論文の信頼性に直結するので精度が不安</li>
+          <li>回収率が低くなりそうで、督促のタイミングが読めない</li>
+          <li>SPSS・Rで使えるローデータ形式での納品が欲しい</li>
+        </ul>
+      </div>
+      <div class="target-col">
+        <div class="target-role staff">🗂 事務担当者・研究補助員の悩み</div>
+        <ul class="pain-list">
+          <li>初めての郵送調査で何から手配すればいいかわからない</li>
+          <li>科研費から支出するための適切な処理・請求書の形式がわからない</li>
+          <li>印刷・発送・集計をそれぞれ別の業者に発注するのが煩雑</li>
+          <li>個人情報の取り扱いについて責任を持てるか不安</li>
+          <li>大学の購買システムを通じた発注ができるか確認したい</li>
+          <li>調査期間が短くなってしまった。対応してもらえるか心配</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution-section">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-eyebrow green">サービス概要</p>
+      <h2 class="sec-title">調査の全工程を一社で。<br>研究者が研究に集中できる環境を。</h2>
+      <p class="sec-lead">資材の準備から郵送・回収・データ化・集計・報告まで、担当者が複数の業者と交渉する手間をゼロにします。</p>
+    </div>
+
+    <div class="flow-wrap fade-in">
+      <div class="flow-track">
+        <div class="flow-step">
+          <div class="flow-circle">📝</div>
+          <div class="flow-label">調査票<br>設計</div>
+          <div class="flow-sub">レイアウト・ID付与</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-circle">🖨️</div>
+          <div class="flow-label">印刷・<br>資材準備</div>
+          <div class="flow-sub">依頼文・返信封筒</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-circle">📬</div>
+          <div class="flow-label">全国<br>一斉発送</div>
+          <div class="flow-sub">督促ハガキも対応</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-circle">📥</div>
+          <div class="flow-label">回収<br>管理</div>
+          <div class="flow-sub">私書箱受取</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-circle">🔍</div>
+          <div class="flow-label">データ化<br>精度保証</div>
+          <div class="flow-sub">目視補正・矛盾チェック</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-circle">📊</div>
+          <div class="flow-label">集計・<br>分析</div>
+          <div class="flow-sub">クロス集計・グラフ</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-circle">📄</div>
+          <div class="flow-label">データ<br>納品</div>
+          <div class="flow-sub">CSV/Excel/論文用</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-grid fade-in">
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>調査票の設計・印刷</h3>
+        <p>見やすく答えやすいアンケート用紙をデザイン。個票ID・バーコード付与で回収管理を効率化します。冊子形式にも対応。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📦</div>
+        <h3>資材準備・全国発送</h3>
+        <p>依頼文・説明文書・返信封筒の同梱から全国一斉発送まで一括対応。督促ハガキ・封書の作成と送付スケジュール管理も行います。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💻</div>
+        <h3>Webアンケート構築</h3>
+        <p>分岐ロジックや必須チェックを設定したWebフォームを構築。個別ID管理で重複回答を防止し、回収状況をリアルタイムで共有します。</p>
+        <span class="tag-green">紙との併用OK</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>データ化・精度保証</h3>
+        <p>スキャン＋目視補正、または他者チェックつき入力で精度を担保。回答の矛盾チェック・匿名化処理まで行います。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <h3>集計・クロス分析</h3>
+        <p>単純集計・クロス集計・グラフ作成まで対応。属性別・設問間の相関など、研究目的に合わせた分析軸を設定できます。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📁</div>
+        <h3>論文用データ納品</h3>
+        <p>ローデータ（CSV／Excel）はもちろん、SPSS・Stata・R用のデータ形式での納品も対応。集計表・グラフ一式もご提供します。</p>
+        <span class="tag-green">論文・紀要にそのまま使用可</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACADEMIC STRENGTHS -->
+<section class="strength-section">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-eyebrow">学術調査専門の強み</p>
+      <h2 class="sec-title">「大学の研究調査」ならではの<br>ノウハウが揃っています</h2>
+      <p class="sec-lead">一般のアンケート代行会社との違いは、学術調査固有の事情を熟知していることです。</p>
+    </div>
+    <div class="strength-grid fade-in">
+      <div class="strength-card">
+        <div class="str-num">1</div>
+        <div>
+          <h3>科研費の費目ごとに分割見積もりを発行</h3>
+          <p>「印刷費」「通信運搬費」「その他（調査費）」など、科研費の支出区分に合わせた請求書・見積書を作成します。</p>
+          <span class="badge">科研費対応</span>
+        </div>
+      </div>
+      <div class="strength-card">
+        <div class="str-num">2</div>
+        <div>
+          <h3>倫理審査スケジュールに合わせた段取り</h3>
+          <p>倫理審査取得後のタイトなスケジュールにも対応。審査書類に記載した調査手順と整合した運用を徹底します。</p>
+          <span class="badge">倫理審査対応</span>
+        </div>
+      </div>
+      <div class="strength-card">
+        <div class="str-num">3</div>
+        <div>
+          <h3>回収率を上げる督促管理の代行</h3>
+          <p>調査期間中の回収状況を把握し、督促ハガキ・メールの送付タイミングを管理。回収率向上を一緒に追求します。</p>
+        </div>
+      </div>
+      <div class="strength-card">
+        <div class="str-num">4</div>
+        <div>
+          <h3>冊子型・複雑な調査票への対応実績</h3>
+          <p>社会学・看護・福祉・心理学など、ページ数の多い冊子形式や複雑な分岐設問の調査票に豊富な実績があります。</p>
+        </div>
+      </div>
+      <div class="strength-card">
+        <div class="str-num">5</div>
+        <div>
+          <h3>研究倫理に沿った個人情報管理</h3>
+          <p>プライバシーマーク取得済み。社内一貫処理でデータが外部に転送されることなく、研究倫理に沿った管理を行います。</p>
+          <span class="badge">Pマーク No.24000347</span>
+        </div>
+      </div>
+      <div class="strength-card">
+        <div class="str-num">6</div>
+        <div>
+          <h3>初めての外注でも安心のヒアリング体制</h3>
+          <p>「調査票がまだできていない」「何から相談すればよいか」という段階からご連絡ください。担当者が丁寧に伴走します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UNIVERSITIES -->
+<section class="univ-section">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-eyebrow">取引実績</p>
+      <h2 class="sec-title">全国の大学・研究機関から<br>ご依頼いただいています</h2>
+      <p class="sec-lead">医学・看護・社会学・教育学・農学など、幅広い分野の研究調査をサポートしてきました。</p>
+    </div>
+    <div class="univ-field-grid fade-in">
+      <div class="field-card">
+        <div class="field-card-label">分野</div>
+        <div class="field-card-field">医学・看護・福祉</div>
+        <div class="field-card-count">多数</div>
+      </div>
+      <div class="field-card">
+        <div class="field-card-label">分野</div>
+        <div class="field-card-field">社会学・教育学</div>
+        <div class="field-card-count">多数</div>
+      </div>
+      <div class="field-card">
+        <div class="field-card-label">分野</div>
+        <div class="field-card-field">心理学・行動科学</div>
+        <div class="field-card-count">多数</div>
+      </div>
+      <div class="field-card">
+        <div class="field-card-label">分野</div>
+        <div class="field-card-field">農学・政策研究</div>
+        <div class="field-card-count">多数</div>
+      </div>
+    </div>
+    <div class="univ-list-wrap fade-in">
+      <div class="univ-list-label">お取引実績のある機関（順不同・一部）</div>
+      <div class="univ-chips">
+        <span class="univ-chip highlight">東京大学</span>
+        <span class="univ-chip highlight">名古屋大学</span>
+        <span class="univ-chip highlight">横浜国立大学</span>
+        <span class="univ-chip highlight">東京都立大学</span>
+        <span class="univ-chip">東京医科歯科大学</span>
+        <span class="univ-chip">名古屋市立大学</span>
+        <span class="univ-chip">富山大学</span>
+        <span class="univ-chip">津田塾大学</span>
+        <span class="univ-chip">金沢美術工芸大学</span>
+        <span class="univ-chip">帝京科学大学</span>
+        <span class="univ-chip">東京家政学院大学</span>
+        <span class="univ-chip">藤田医科大学</span>
+        <span class="univ-chip">日本赤十字豊田看護大学</span>
+        <span class="univ-chip">名古屋音楽大学</span>
+        <span class="univ-chip">東海学園大学</span>
+        <span class="univ-chip">同朋大学</span>
+        <span class="univ-chip">朝日大学</span>
+        <span class="univ-chip">川口短期大学</span>
+        <span class="univ-chip">国立精神・神経医療研究センター</span>
+        <span class="univ-chip">農林水産政策研究所</span>
+        <span class="univ-chip">ほか多数</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section class="price-section" id="price">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-eyebrow">料金の目安</p>
+      <h2 class="sec-title">調査方法・規模別の参考料金</h2>
+      <p class="sec-lead">実施内容により変動しますが、予算立ての参考にご活用ください。お見積もりは無料・2営業日以内にご提示します。</p>
+    </div>
+    <div class="kakenhi-box fade-in">
+      <div class="kakenhi-icon">💡</div>
+      <div>
+        <h3>科研費（KAKENHI）をご利用の方へ</h3>
+        <p>「印刷費」「通信運搬費」「その他（調査費・データ整理費）」など、<strong>科研費の費目区分に合わせた見積書・請求書を発行</strong>します。経理処理でお困りの際はお気軽にご相談ください。</p>
+      </div>
+    </div>
+    <div class="price-cards fade-in">
+      <div class="price-card">
+        <div class="price-method">冊子調査票</div>
+        <div class="price-name">小〜中規模</div>
+        <div class="price-scale">200人規模・回収150冊想定</div>
+        <div class="price-amount">172,000円<span>（税別・概算）</span></div>
+        <hr class="price-divider">
+        <ul class="price-includes">
+          <li>A4冊子（8頁・中綴じ）＋説明書</li>
+          <li>客先で配布・回収後、宅配便送付</li>
+          <li>入力・ローデータ作成</li>
+          <li>単純集計表</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <div class="price-method">マークシート郵送</div>
+        <div class="price-name">中規模・郵送</div>
+        <div class="price-scale">1,000人規模・回収500枚想定</div>
+        <div class="price-amount">704,500円<span>（税別・概算）</span></div>
+        <hr class="price-divider">
+        <ul class="price-includes">
+          <li>A3用紙（両面2色・2つ折り）＋封筒一式</li>
+          <li>普通郵便発送・私書箱回収</li>
+          <li>OCR読込・単純集計</li>
+          <li>グラフ付き簡易レポート</li>
+          <li>郵送費：244,500円含む</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="price-method">Webアンケート</div>
+        <div class="price-name">大規模・Web</div>
+        <div class="price-scale">2,000人規模</div>
+        <div class="price-amount">470,000円<span>（税別・概算）</span></div>
+        <hr class="price-divider">
+        <ul class="price-includes">
+          <li>A4説明書＋発送封筒</li>
+          <li>普通郵便発送</li>
+          <li>Webフォーム作成（1ヶ月以内）</li>
+          <li>ローデータ・単純集計</li>
+          <li>郵送費：220,000円含む</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="price-method">紙＋Web 併用</div>
+        <div class="price-name">大規模・ハイブリッド</div>
+        <div class="price-scale">3,000人規模・回収1,000件想定</div>
+        <div class="price-amount">860,000円<span>（税別・概算）</span></div>
+        <hr class="price-divider">
+        <ul class="price-includes">
+          <li>A3用紙（両面2色）＋封筒一式</li>
+          <li>ゆうメール発送・私書箱回収</li>
+          <li>Webフォーム作成（1ヶ月以内）</li>
+          <li>ローデータ・分類別集計</li>
+          <li>郵送費：260,000円含む</li>
+        </ul>
+      </div>
+    </div>
+    <p class="price-note fade-in">※設問数・回収方法・集計内容・報告書の有無などにより変動します。まずはお気軽にご相談ください。お見積もりは無料です。</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-eyebrow">よくあるご質問</p>
+      <h2 class="sec-title">研究者・事務担当者から<br>よくいただく質問</h2>
+    </div>
+    <div class="faq-list fade-in">
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">科研費から支出したいのですが、費目ごとに分割した見積書・請求書を発行してもらえますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a"><span class="faq-a-inner">はい、対応しています。印刷費・通信運搬費・その他（調査費・データ整理費）など、科研費の費目区分に合わせた見積書・請求書の発行が可能です。大学の経理規程によって対応が異なる場合がありますので、事前にご相談ください。</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">倫理審査書類に記載する「調査実施機関」や「個人情報管理者」はどう記載すればよいですか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a"><span class="faq-a-inner">倫理審査書類の記載方法については、弊社の会社概要や個人情報管理体制に関する情報をご提供することが可能です。審査段階でのご相談をお受けしておりますので、お早めにご連絡ください。</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">SPSS・Stata・Rで使えるデータ形式での納品はできますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a"><span class="faq-a-inner">CSV・Excel形式での納品が基本ですが、SPSS・Stata・R等の統計ソフトで読み込みやすいよう、変数名の設定や変数ラベルの付与など、ご要望に応じた形式でのローデータ提供が可能です。事前にご相談ください。</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">調査票の設問がまだ固まっていません。それでも相談できますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a"><span class="faq-a-inner">もちろんです。「研究目的」と「知りたいこと」をお聞かせいただければ、設問の構成・設計段階からアドバイスします。過去の類似調査の事例もご参考にご提示できます。</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">回収率の目安はどのくらいですか？回収率を上げる工夫はできますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a"><span class="faq-a-inner">郵送調査の回収率は対象者や調査内容によって大きく異なりますが、一般的に20〜40%程度が目安です。回収率向上のために、督促ハガキ・封書の送付スケジュール管理や、QRコードを使ったWeb回答との併用などをご提案できます。</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">倫理審査の関係でスケジュールが遅れ、調査開始まで時間がありません。対応できますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a"><span class="faq-a-inner">学術調査では審査の遅れによるスケジュール変更がよくあることをよく理解しています。できる限り柔軟に対応しますので、まずはご相談ください。状況に合わせて、優先対応の可否をご提示します。</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-text">大学の購買システム・物品購入システムを通じた発注はできますか？</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-a"><span class="faq-a-inner">多くの大学の購買・発注システムに対応しています。システムの種類や手続きについて事前にご確認いただき、詳細をお知らせください。必要な書類等もご相談に応じます。</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FORM -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="fade-in">
+      <p class="sec-eyebrow">無料相談・お見積もり</p>
+      <h2 class="sec-title">まずはお気軽にご相談ください</h2>
+      <p class="sec-lead">「設問がまだ固まっていない」「倫理審査と並行して準備したい」という段階からのご相談を歓迎します。2営業日以内にご連絡いたします。</p>
+    </div>
+    <div class="form-wrap fade-in">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>所属機関名 <span class="req">必須</span></label>
+          <input type="text" placeholder="○○大学 △△研究科">
+        </div>
+        <div class="form-group">
+          <label>お名前・役職 <span class="req">必須</span></label>
+          <input type="text" placeholder="山田 太郎（准教授）">
+        </div>
+        <div class="form-group">
+          <label>メールアドレス <span class="req">必須</span></label>
+          <input type="email" placeholder="yamada@univ.ac.jp">
+        </div>
+        <div class="form-group">
+          <label>電話番号 <span class="opt">任意</span></label>
+          <input type="tel" placeholder="052-XXX-XXXX">
+        </div>
+        <div class="form-group">
+          <label>調査対象者数（概算） <span class="opt">任意</span></label>
+          <select>
+            <option value="">選択してください</option>
+            <option>〜200人</option>
+            <option>200〜500人</option>
+            <option>500〜1,000人</option>
+            <option>1,000〜3,000人</option>
+            <option>3,000人以上</option>
+            <option>未定</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>調査方法の希望 <span class="opt">任意</span></label>
+          <select>
+            <option value="">選択してください</option>
+            <option>紙（郵送調査）</option>
+            <option>Webアンケート</option>
+            <option>紙＋Web 併用</option>
+            <option>まだ決めていない</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>調査実施の予定時期 <span class="opt">任意</span></label>
+          <select>
+            <option value="">選択してください</option>
+            <option>1ヶ月以内</option>
+            <option>3ヶ月以内</option>
+            <option>半年以内</option>
+            <option>1年以内</option>
+            <option>未定・検討中</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>科研費のご利用 <span class="opt">任意</span></label>
+          <select>
+            <option value="">選択してください</option>
+            <option>科研費を利用予定</option>
+            <option>科研費以外の研究費を利用予定</option>
+            <option>自己負担 / 所属機関の予算</option>
+            <option>未定</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>ご相談内容</label>
+          <textarea placeholder="研究の概要、調査の目的、現在の進捗状況（倫理審査の状況など）、ご予算感など、お気軽にご記入ください。"></textarea>
+        </div>
+      </div>
+      <div class="form-submit">
+        <button class="submit-btn">無料相談を申し込む →</button>
+        <p class="form-note">送信後2営業日以内に担当者よりご連絡いたします。<br>個人情報はプライバシーポリシーに従い適切に管理します。</p>
+      </div>
+      <div class="kakenhi-note">
+        <strong>科研費でのご依頼の方：</strong>費目区分ごとの見積書発行に対応しています。お見積もりご依頼の際に「科研費利用」とお伝えください。
+      </div>
+      <div class="tel-cta">
+        <p class="tel-label">お電話でのご相談はこちら（無料・平日のみ）</p>
+        <div class="tel-num">📞 0120-935-040</div>
+        <p class="tel-hours">担当：花木（はなき）・都築　／　平日 9:00〜17:30</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>
+    <a href="https://www.survey-support.jp/">アンケートまるごとサポート</a>　／　
+    <a href="https://www.tkp.co.jp/">東海共同印刷株式会社</a>　／　
+    <a href="https://www.survey-support.jp/privacy_policy">プライバシーポリシー</a>
+  </p>
+  <p style="margin-top:8px">© 東海共同印刷株式会社　All Rights Reserved.</p>
+</footer>
+
+<script>
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 70);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
